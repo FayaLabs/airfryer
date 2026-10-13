@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sessions | Airfryer Collective</title>
+    <meta name="description" content="All Airfryer Collective sessions — intimate living room DJ sets recorded in Barcelona. Explore by vibe, artist, or just hit play.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            black: '#1A1714',
+                            white: '#EDE6DC',
+                            gold: '#C4956B',
+                            teal: '#7BA8A0',
+                            purple: '#9B7EB8',
+                            dark: '#12100E',
+                            surface: '#24201C',
+                            surfaceHighlight: '#2E2A25'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['DM Sans', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'grain': "url('https://cdnjs.cloudflare.com/ajax/libs/svg-patterns/1.0.0/dist/noise.svg')",
+                        'holographic': 'linear-gradient(135deg, #C4956B 0%, #9B7EB8 50%, #7BA8A0 100%)',
+                        'vinyl-shine': 'conic-gradient(from 180deg at 50% 50%, rgba(255,255,255,0.1) 0deg, rgba(255,255,255,0) 60deg, rgba(255,255,255,0.1) 120deg, rgba(255,255,255,0) 180deg, rgba(255,255,255,0.1) 240deg, rgba(255,255,255,0) 300deg, rgba(255,255,255,0.1) 360deg)',
+                    },
+                    animation: {
+                        'spin-slow': 'spin 8s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulse-glow 4s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: 0.6, filter: 'brightness(1)' },
+                            '50%': { opacity: 1, filter: 'brightness(1.2)' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: 0 },
+                            '100%': { transform: 'translateY(0)', opacity: 1 },
+                        },
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(196, 149, 107, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        body {
+            background-color: #1A1714;
+            color: #EDE6DC;
+            font-family: 'DM Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.07;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        .holographic-text {
+            background: linear-gradient(135deg, #C4956B 20%, #9B7EB8 50%, #7BA8A0 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 200%;
+            animation: gradient-shift 5s ease infinite;
+        }
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .vinyl-grooves {
+            background: repeating-radial-gradient(
+                #12100E,
+                #12100E 2px,
+                #24201C 3px,
+                #24201C 4px
+            );
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-panel {
+            background: rgba(36, 32, 28, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(237, 230, 220, 0.05);
+        }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+        /* Session card hover */
+        .session-card:hover .play-overlay {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .session-card:hover .card-image {
+            transform: scale(1.05);
+        }
+        .session-card { transition: all 0.3s ease; }
+
+        /* Filter active state */
+        .vibe-filter.active {
+            background-color: #EDE6DC;
+            color: #1A1714;
+            border-color: transparent;
+        }
+        .vibe-filter.active .filter-dot {
+            opacity: 1;
+        }
+
+        /* No results */
+        .no-results { display: none; }
+        .no-results.visible { display: block; }
+
+        /* Uniform grid when filtered */
+        @media (min-width: 768px) {
+            .grid-filtered > .session-card {
+                grid-column: span 6 !important;
+                grid-row: span 1 !important;
+            }
+        }
+        /* Featured card becomes compact when filtered */
+        .grid-filtered .featured-text { display: none !important; }
+        .grid-filtered .featured-overlay { display: block !important; }
+        .grid-filtered .featured-image {
+            flex: none !important;
+            aspect-ratio: 16/9 !important;
+            min-height: 0 !important;
+        }
+        .grid-filtered .featured-link {
+            height: auto !important;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-gold selection:text-brand-black">
+
+    <!-- Global Grain Overlay -->
+    <div class="grain-overlay"></div>
+
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-6 transition-all duration-300" id="navbar">
+        <div class="max-w-[1440px] mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 overflow-hidden flex-shrink-0 group-hover:scale-110 transition-transform duration-300" style="margin-top: -4px;">
+                    <img src="mascot-white.png" alt="Airfryer Collective" class="w-full object-cover object-top" style="height: 135%; margin-top: -5%;">
+                </div>
+                <span class="font-display font-bold text-xl tracking-tight text-brand-white">AIRFRYER <span class="text-brand-white/70">COLLECTIVE</span></span>
+            </a>
+
+            <div class="hidden lg:flex items-center space-x-1">
+                <div class="glass-panel px-2 py-1.5 rounded-full flex items-center space-x-1">
+                    <a href="index.html" class="px-4 py-2 rounded-full text-xs font-bold text-brand-white/70 hover:text-brand-white hover:bg-brand-white/5 transition-all whitespace-nowrap">HOME</a>
+                    <span class="px-4 py-2 rounded-full text-xs font-bold text-brand-white bg-brand-white/10 whitespace-nowrap">SESSIONS</span>
+                    <a href="index.html#about" class="px-4 py-2 rounded-full text-xs font-bold text-brand-white/70 hover:text-brand-white hover:bg-brand-white/5 transition-all whitespace-nowrap">ABOUT</a>
+                    <a href="index.html#artists" class="px-4 py-2 rounded-full text-xs font-bold text-brand-white/70 hover:text-brand-white hover:bg-brand-white/5 transition-all whitespace-nowrap">THE COMMUNITY</a>
+                    <a href="index.html#events" class="px-4 py-2 rounded-full text-xs font-bold text-brand-white/70 hover:text-brand-white hover:bg-brand-white/5 transition-all whitespace-nowrap">EVENTS</a>
+                    <a href="/partnerships" class="px-4 py-2 rounded-full text-xs font-bold text-brand-white/70 hover:text-brand-white hover:bg-brand-white/5 transition-all whitespace-nowrap">PARTNERSHIPS</a>
+                </div>
+                <a href="index.html#contact" class="ml-4 px-6 py-3.5 rounded-full bg-brand-white text-brand-black text-xs font-bold hover:bg-brand-gold transition-all duration-300 shadow-lg hover:shadow-glow transform hover:-translate-y-0.5">
+                    CONTACT
+                </a>
+            </div>
+
+            <button id="mobile-menu-btn" class="lg:hidden text-brand-white">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden lg:hidden mt-4 pb-4 border-t border-brand-white/10 pt-4">
+            <div class="flex flex-col space-y-4">
+                <a href="index.html" class="text-sm font-bold text-brand-white/70 hover:text-brand-white transition-colors">HOME</a>
+                <span class="text-sm font-bold text-brand-gold">SESSIONS</span>
+                <a href="index.html#about" class="text-sm font-bold text-brand-white/70 hover:text-brand-white transition-colors">ABOUT</a>
+                <a href="index.html#artists" class="text-sm font-bold text-brand-white/70 hover:text-brand-white transition-colors">THE COMMUNITY</a>
+                <a href="index.html#events" class="text-sm font-bold text-brand-white/70 hover:text-brand-white transition-colors">EVENTS</a>
+                <a href="/partnerships" class="text-sm font-bold text-brand-white/70 hover:text-brand-white transition-colors">PARTNERSHIPS</a>
+                <a href="index.html#contact" class="text-sm font-bold text-brand-white hover:text-brand-gold transition-colors">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="relative z-0 pt-28 md:pt-32 pb-20">
+
+        <!-- HEADER SECTION -->
+        <section class="px-6 mb-12 md:mb-16 relative">
+            <div class="max-w-[1440px] mx-auto">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-8 mb-10 md:mb-12">
+                    <div class="max-w-2xl">
+                        <div class="flex items-center space-x-3 mb-4 md:mb-6 animate-slide-up opacity-0" style="animation-delay: 0.1s;">
+                            <span class="w-12 h-[1px] bg-brand-gold"></span>
+                            <span class="text-brand-gold text-sm font-bold tracking-[0.2em] uppercase">The Archive</span>
+                        </div>
+                        <h1 class="text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-[0.9] tracking-tight mb-4 md:mb-6 animate-slide-up opacity-0" style="animation-delay: 0.2s;">
+                            SESSION<br>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-white/40 to-brand-white/10">INDEX</span>
+                        </h1>
+                        <p class="text-lg md:text-xl text-brand-white/60 font-light max-w-lg leading-relaxed animate-slide-up opacity-0" style="animation-delay: 0.3s;">
+                            Every session recorded in Barcelona. Explore by vibe, artist, or just hit play and discover.
+                        </p>
+                    </div>
+
+                    <!-- Search Bar -->
+                    <div class="w-full md:w-auto animate-slide-up opacity-0" style="animation-delay: 0.4s;">
+                        <div class="relative group">
+                            <input type="text" id="search-input" placeholder="Search artist or genre..." class="w-full md:w-80 bg-brand-surface border border-brand-white/10 rounded-full py-3 md:py-4 pl-12 pr-6 text-brand-white placeholder-brand-white/30 focus:outline-none focus:border-brand-white/30 focus:bg-brand-surfaceHighlight transition-all text-sm md:text-base">
+                            <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-brand-white/30 group-focus-within:text-brand-gold transition-colors"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FILTERS -->
+                <div class="border-t border-b border-brand-white/5 py-4 md:py-6 animate-slide-up opacity-0" style="animation-delay: 0.5s;">
+                    <div class="flex items-center space-x-3 md:space-x-4 overflow-x-auto hide-scrollbar pb-2 md:pb-0" id="filter-bar">
+                        <span class="text-brand-white/40 text-xs font-bold uppercase tracking-widest mr-2 md:mr-4 whitespace-nowrap">Filter by Vibe:</span>
+
+                        <button class="vibe-filter active px-4 md:px-5 py-2 rounded-full bg-brand-white text-brand-black text-xs md:text-sm font-bold transition-all whitespace-nowrap" data-vibe="all">
+                            All Sessions
+                        </button>
+                        <button class="vibe-filter px-4 md:px-5 py-2 rounded-full bg-brand-surface border border-brand-white/5 text-brand-white/70 text-xs md:text-sm font-medium hover:text-brand-white hover:border-brand-white/20 transition-all whitespace-nowrap group" data-vibe="bridge48">
+                            Leavin&rsquo; the Room
+                        </button>
+                        <button class="vibe-filter px-4 md:px-5 py-2 rounded-full bg-brand-surface border border-brand-white/5 text-brand-white/70 text-xs md:text-sm font-medium hover:text-brand-white hover:border-brand-white/20 transition-all whitespace-nowrap group" data-vibe="house">
+                            <span class="filter-dot w-2 h-2 rounded-full bg-brand-gold inline-block mr-2 opacity-50 group-hover:opacity-100 transition-opacity"></span>House
+                        </button>
+                        <button class="vibe-filter px-4 md:px-5 py-2 rounded-full bg-brand-surface border border-brand-white/5 text-brand-white/70 text-xs md:text-sm font-medium hover:text-brand-white hover:border-brand-white/20 transition-all whitespace-nowrap group" data-vibe="afro">
+                            <span class="filter-dot w-2 h-2 rounded-full bg-brand-teal inline-block mr-2 opacity-50 group-hover:opacity-100 transition-opacity"></span>Afro
+                        </button>
+                        <button class="vibe-filter px-4 md:px-5 py-2 rounded-full bg-brand-surface border border-brand-white/5 text-brand-white/70 text-xs md:text-sm font-medium hover:text-brand-white hover:border-brand-white/20 transition-all whitespace-nowrap group" data-vibe="indie-dance">
+                            <span class="filter-dot w-2 h-2 rounded-full bg-brand-purple inline-block mr-2 opacity-50 group-hover:opacity-100 transition-opacity"></span>Indie Dance
+                        </button>
+                        <button class="vibe-filter px-4 md:px-5 py-2 rounded-full bg-brand-surface border border-brand-white/5 text-brand-white/70 text-xs md:text-sm font-medium hover:text-brand-white hover:border-brand-white/20 transition-all whitespace-nowrap group" data-vibe="techno">
+                            <span class="filter-dot w-2 h-2 rounded-full bg-rose-400 inline-block mr-2 opacity-50 group-hover:opacity-100 transition-opacity"></span>Techno
+                        </button>
+                        <button class="vibe-filter px-4 md:px-5 py-2 rounded-full bg-brand-surface border border-brand-white/5 text-brand-white/70 text-xs md:text-sm font-medium hover:text-brand-white hover:border-brand-white/20 transition-all whitespace-nowrap group" data-vibe="breakbeat">
+                            <span class="filter-dot w-2 h-2 rounded-full bg-brand-white inline-block mr-2 opacity-50 group-hover:opacity-100 transition-opacity"></span>Breakbeat
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SESSIONS GRID -->
+        <section class="px-6 relative overflow-hidden">
+            <!-- Background Decoration -->
+            <div class="absolute top-[10%] left-[-10%] w-[800px] h-[800px] bg-brand-gold/5 rounded-full blur-[150px] pointer-events-none z-0"></div>
+            <div class="absolute bottom-[20%] right-[-10%] w-[600px] h-[600px] bg-brand-teal/5 rounded-full blur-[150px] pointer-events-none z-0"></div>
+
+            <div class="max-w-[1440px] mx-auto relative z-10">
+
+                <!-- No Results Message -->
+                <div id="no-results" class="no-results text-center py-20">
+                    <p class="text-brand-white/40 text-lg">No sessions match your search.</p>
+                </div>
+
+                <!-- Grid Container -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6" id="sessions-grid">
+
+                    <!-- ============================================ -->
+                    <!-- ROW 1: Nuup (8-col, spans 2 rows) + Marco (4-col) + Ezera (4-col) stacked -->
+                    <!-- ============================================ -->
+
+
+                    <!-- ============================================ -->
+                    <!-- LATEST RELEASES (published Sep–Oct 2026) -->
+                    <!-- ROW: Andrés @ Salva Discos (6) + Seed Selector (6) / Soulfie + KMNI + Animaâ B2B Ganem (4 each) -->
+                    <!-- ============================================ -->
+
+                    <!-- LEAVIN' THE ROOM @ SALVA DISCOS — Andrés Divitto -->
+                    <article class="session-card group md:col-span-6 relative bg-brand-surface rounded-2xl md:rounded-3xl overflow-hidden border border-brand-white/5 hover:border-brand-white/20 transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 0.1s;"
+                        data-artist="Andrés Divitto" data-genres="Deep House House" data-vibes="house bridge48" data-session="sd">
+                        <a href="https://youtu.be/oPAwYG0t9I8" target="_blank" rel="noopener" class="block">
+                            <div class="relative aspect-video overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent z-10"></div>
+                                <img src="thumbs/salvadiscos/andres-divitto.jpg" alt="Andrés Divitto at Salva Discos" loading="lazy" class="card-image w-full h-full object-cover transition-transform duration-700 ease-out">
+
+                                <div class="absolute top-3 md:top-4 left-3 md:left-4 z-20 flex gap-2">
+                                    <span class="px-2 py-1 bg-brand-teal/90 backdrop-blur-md rounded text-[10px] font-bold uppercase tracking-wider text-brand-black shadow-lg">
+                                        Salva Discos
+                                    </span>
+                                </div>
+
+                                <div class="absolute bottom-0 left-0 right-0 p-4 md:p-5 z-20">
+                                    <div class="flex items-center space-x-2 text-brand-gold text-[10px] font-bold uppercase tracking-widest mb-1">
+                                        <span>Deep House</span>
+                                        <span class="text-brand-white/30">&bull;</span>
+                                        <span>Leavin&rsquo; the Room</span>
+                                    </div>
+                                    <h3 class="text-lg md:text-xl font-display font-bold text-brand-white group-hover:text-brand-teal transition-colors">ANDRÉS DIVITTO</h3>
+                                </div>
+
+                                <div class="play-overlay absolute inset-0 z-30 flex items-center justify-center opacity-0 transition-all duration-300 bg-brand-black/40 backdrop-blur-[2px] pointer-events-none">
+                                    <div class="w-12 h-12 rounded-full bg-brand-white flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                        <i class="fa-solid fa-play text-brand-black ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- SESSION 16 — Seed Selector -->
+                    <article class="session-card group md:col-span-6 relative bg-brand-surface rounded-2xl md:rounded-3xl overflow-hidden border border-brand-white/5 hover:border-brand-white/20 transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 0.2s;"
+                        data-artist="Seed Selector" data-genres="House" data-vibes="house" data-session="16">
+                        <a href="https://youtu.be/lmSqYLC9XeM" target="_blank" rel="noopener" class="block">
+                            <div class="relative aspect-video overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent z-10"></div>
+                                <img src="thumbs/living-room/seed-selector.jpg" alt="Seed Selector Session" loading="lazy" class="card-image w-full h-full object-cover transition-transform duration-700 ease-out">
+
+                                <div class="absolute top-3 md:top-4 left-3 md:left-4 z-20 flex gap-2">
+                                    <span class="px-2 py-1 bg-brand-black/60 backdrop-blur-md rounded text-[10px] font-medium uppercase tracking-wider text-brand-white border border-brand-white/10">
+                                        #016
+                                    </span>
+                                </div>
+
+                                <div class="absolute bottom-0 left-0 right-0 p-4 md:p-5 z-20">
+                                    <div class="flex items-center space-x-2 text-brand-gold text-[10px] font-bold uppercase tracking-widest mb-1">
+                                        <span>House</span>
+                                    </div>
+                                    <h3 class="text-lg md:text-xl font-display font-bold text-brand-white group-hover:text-brand-gold transition-colors">SEED SELECTOR</h3>
+                                </div>
+
+                                <div class="play-overlay absolute inset-0 z-30 flex items-center justify-center opacity-0 transition-all duration-300 bg-brand-black/40 backdrop-blur-[2px] pointer-events-none">
+                                    <div class="w-12 h-12 rounded-full bg-brand-white flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                        <i class="fa-solid fa-play text-brand-black ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- SESSION 15 — Soulfie -->
+                    <article class="session-card group md:col-span-4 relative bg-brand-surface rounded-2xl md:rounded-3xl overflow-hidden border border-brand-white/5 hover:border-brand-white/20 transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 0.3s;"
+                        data-artist="Soulfie" data-genres="House Disco Soul" data-vibes="house" data-session="15">
+                        <a href="https://youtu.be/iThWGMtdAk4" target="_blank" rel="noopener" class="block">
+                            <div class="relative aspect-video overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent z-10"></div>
+                                <img src="thumbs/living-room/soulfie.jpg" alt="Soulfie Session" loading="lazy" class="card-image w-full h-full object-cover transition-transform duration-700 ease-out">
+
+                                <div class="absolute top-3 md:top-4 left-3 md:left-4 z-20 flex gap-2">
+                                    <span class="px-2 py-1 bg-brand-black/60 backdrop-blur-md rounded text-[10px] font-medium uppercase tracking-wider text-brand-white border border-brand-white/10">
+                                        #015
+                                    </span>
+                                </div>
+
+                                <div class="absolute bottom-0 left-0 right-0 p-4 md:p-5 z-20">
+                                    <div class="flex items-center space-x-2 text-brand-gold text-[10px] font-bold uppercase tracking-widest mb-1">
+                                        <span>House</span>
+                                    </div>
+                                    <h3 class="text-lg md:text-xl font-display font-bold text-brand-white group-hover:text-brand-gold transition-colors">SOULFIE</h3>
+                                </div>
+
+                                <div class="play-overlay absolute inset-0 z-30 flex items-center justify-center opacity-0 transition-all duration-300 bg-brand-black/40 backdrop-blur-[2px] pointer-events-none">
+                                    <div class="w-12 h-12 rounded-full bg-brand-white flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                        <i class="fa-solid fa-play text-brand-black ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- SESSION 14 — KMNI -->
+                    <article class="session-card group md:col-span-4 relative bg-brand-surface rounded-2xl md:rounded-3xl overflow-hidden border border-brand-white/5 hover:border-brand-white/20 transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 0.4s;"
+                        data-artist="KMNI" data-genres="Afro House" data-vibes="afro" data-session="14">
+                        <a href="https://youtu.be/ezyciDVG0lw" target="_blank" rel="noopener" class="block">
+                            <div class="relative aspect-video overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent z-10"></div>
+                                <img src="thumbs/living-room/kmni.jpg" alt="KMNI Session" loading="lazy" class="card-image w-full h-full object-cover transition-transform duration-700 ease-out">
+
+                                <div class="absolute top-3 md:top-4 left-3 md:left-4 z-20 flex gap-2">
+                                    <span class="px-2 py-1 bg-brand-black/60 backdrop-blur-md rounded text-[10px] font-medium uppercase tracking-wider text-brand-white border border-brand-white/10">
+                                        #014
+                                    </span>
+                                </div>
+
+                                <div class="absolute bottom-0 left-0 right-0 p-4 md:p-5 z-20">
+                                    <div class="flex items-center space-x-2 text-brand-gold text-[10px] font-bold uppercase tracking-widest mb-1">
+                                        <span>Afro House</span>
+                                    </div>
+                                    <h3 class="text-lg md:text-xl font-display font-bold text-brand-white group-hover:text-brand-teal transition-colors">KMNI</h3>
+                                </div>
+
+                                <div class="play-overlay absolute inset-0 z-30 flex items-center justify-center opacity-0 transition-all duration-300 bg-brand-black/40 backdrop-blur-[2px] pointer-events-none">
+                                    <div class="w-12 h-12 rounded-full bg-brand-white flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                        <i class="fa-solid fa-play text-brand-black ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- SESSION 13 — Animaâ B2B Ganem -->
+                    <article class="session-card group md:col-span-4 relative bg-brand-surface rounded-2xl md:rounded-3xl overflow-hidden border border-brand-white/5 hover:border-brand-white/20 transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 0.5s;"
+                        data-artist="Animaâ B2B Ganem" data-genres="Indie Dance Deep House" data-vibes="indie-dance house" data-session="13">
+                        <a href="https://youtu.be/17sTKp8EePY" target="_blank" rel="noopener" class="block">
+                            <div class="relative aspect-video overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent z-10"></div>
+                                <img src="thumbs/living-room/animaa-b2b-ganem.jpg" alt="Animaâ B2B Ganem Session" loading="lazy" class="card-image w-full h-full object-cover transition-transform duration-700 ease-out">
+
+                                <div class="absolute top-3 md:top-4 left-3 md:left-4 z-20 flex gap-2">
+                                    <span class="px-2 py-1 bg-brand-purple/90 backdrop-blur-md rounded text-[10px] font-bold uppercase tracking-wider text-white shadow-lg">
+                                        B2B
+                                    </span>
+                                    <span class="px-2 py-1 bg-brand-black/60 backdrop-blur-md rounded text-[10px] font-medium uppercase tracking-wider text-brand-white border border-brand-white/10">
+                                        #013
+                                    </span>
+                                </div>
+
+                                <div class="absolute bottom-0 left-0 right-0 p-4 md:p-5 z-20">
+                                    <div class="flex items-center space-x-2 text-brand-gold text-[10px] font-bold uppercase tracking-widest mb-1">
+                                        <span>Indie Dance</span>
+                                        <span class="text-brand-white/30">&bull;</span>
+                                        <span>Deep House</span>
+                                    </div>
+                                    <h3 class="text-lg md:text-xl font-display font-bold text-brand-white group-hover:text-brand-purple transition-colors">ANIMAÂ B2B GANEM</h3>
+                                </div>
+
+                                <div class="play-overlay absolute inset-0 z-30 flex items-center justify-center opacity-0 transition-all duration-300 bg-brand-black/40 backdrop-blur-[2px] pointer-events-none">
+                                    <div class="w-12 h-12 rounded-full bg-brand-white flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                        <i class="fa-solid fa-play text-brand-black ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- ============================================ -->
+                    <!-- LEAVIN' THE ROOM @ BRIDGE 48 (May 2026) -->
+                    <!-- ============================================ -->
+
+                    <!-- LEAVIN' THE ROOM @ BRIDGE 48 — Le Bulla -->
+                    <article class="session-card group md:col-span-4 relative bg-brand-surface rounded-2xl md:rounded-3xl overflow-hidden border border-brand-white/5 hover:border-brand-white/20 transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 0.1s;"
+                        data-artist="Le Bulla" data-genres="Indie Dance House" data-vibes="indie-dance house bridge48" data-session="b48">
+                        <a href="https://youtu.be/udaSeXCRQn0" target="_blank" rel="noopener" class="block">
+                            <div class="relative aspect-video overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent z-10"></div>
+                                <img src="thumbs/bridge48/le-bulla.jpg" alt="Le Bulla at Bridge 48" loading="lazy" class="card-image w-full h-full object-cover transition-transform duration-700 ease-out">
+
+                                <div class="absolute top-3 md:top-4 left-3 md:left-4 z-20 flex gap-2">
+                                    <span class="px-2 py-1 bg-brand-gold/90 backdrop-blur-md rounded text-[10px] font-bold uppercase tracking-wider text-brand-black shadow-lg">
+                                        Bridge 48
+                                    </span>
+                                </div>
+
+                                <div class="absolute bottom-0 left-0 right-0 p-4 md:p-5 z-20">
+                                    <div class="flex items-center space-x-2 text-brand-gold text-[10px] font-bold uppercase tracking-widest mb-1">
+                                        <span>Indie Dance &amp; House</span>
+                                        <span class="text-brand-white/30">&bull;</span>
+                                        <span>Leavin&rsquo; the Room</span>
+                                    </div>
+                                    <h3 class="text-lg md:text-xl font-display font-bold text-brand-white group-hover:text-brand-gold transition-colors">LE BULLA</h3>
+                                </div>
+
+                                <div class="play-overlay absolute inset-0 z-30 flex items-center justify-center opacity-0 transition-all duration-300 bg-brand-black/40 backdrop-blur-[2px] pointer-events-none">
+                                    <div class="w-12 h-12 rounded-full bg-brand-white flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                        <i class="fa-solid fa-play text-brand-black ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- LEAVIN' THE ROOM @ BRIDGE 48 — Marco Boarelli -->
+                    <article class="session-card group md:col-span-4 relative bg-brand-surface rounded-2xl md:rounded-3xl overflow-hidden border border-brand-white/5 hover:border-brand-white/20 transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 0.2s;"
+                        data-artist="Marco Boarelli" data-genres="Progressive House" data-vibes="house bridge48" data-session="b48">
+                        <a href="https://youtu.be/b9Svr_Aajr0" target="_blank" rel="noopener" class="block">
+                            <div class="relative aspect-video overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent z-10"></div>
+                                <img src="thumbs/bridge48/marco-boarelli.jpg" alt="Marco Boarelli at Bridge 48" loading="lazy" class="card-image w-full h-full object-cover transition-transform duration-700 ease-out">
+
+                                <div class="absolute top-3 md:top-4 left-3 md:left-4 z-20 flex gap-2">
+                                    <span class="px-2 py-1 bg-brand-gold/90 backdrop-blur-md rounded text-[10px] font-bold uppercase tracking-wider text-brand-black shadow-lg">
+                                        Bridge 48
+                                    </span>
+                                </div>
+
+                                <div class="absolute bottom-0 left-0 right-0 p-4 md:p-5 z-20">
+                                    <div class="flex items-center space-x-2 text-brand-gold text-[10px] font-bold uppercase tracking-widest mb-1">
+                                        <span>Progressive House</span>
+                                        <span class="text-brand-white/30">&bull;</span>
+                                        <span>Leavin&rsquo; the Room</span>
+                                    </div>
+                                    <h3 class="text-lg md:text-xl font-display font-bold text-brand-white group-hover:text-brand-purple transition-colors">MARCO BOARELLI</h3>
+                                </div>
+
+                                <div class="play-overlay absolute inset-0 z-30 flex items-center justify-center opacity-0 transition-all duration-300 bg-brand-black/40 backdrop-blur-[2px] pointer-events-none">
+                                    <div class="w-12 h-12 rounded-full bg-brand-white flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                        <i class="fa-solid fa-play text-brand-black ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- LEAVIN' THE ROOM @ BRIDGE 48 — Nairo -->
+                    <article class="session-card group md:col-span-4 relative bg-brand-surface rounded-2xl md:rounded-3xl overflow-hidden border border-brand-white/5 hover:border-brand-white/20 transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 0.3s;"
+                        data-artist="Nairo" data-genres="Indie Dance" data-vibes="indie-dance bridge48" data-session="b48">
+                        <a href="https://youtu.be/R0v4VRlLJwM" target="_blank" rel="noopener" class="block">
+                            <div class="relative aspect-video overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent z-10"></div>
+                                <img src="thumbs/bridge48/nairo.jpg" alt="Nairo at Bridge 48" loading="lazy" class="card-image w-full h-full object-cover transition-transform duration-700 ease-out">
+
+                                <div class="absolute top-3 md:top-4 left-3 md:left-4 z-20 flex gap-2">
+                                    <span class="px-2 py-1 bg-brand-gold/90 backdrop-blur-md rounded text-[10px] font-bold uppercase tracking-wider text-brand-black shadow-lg">
+                                        Bridge 48
+                                    </span>
+                                </div>
+
+                                <div class="absolute bottom-0 left-0 right-0 p-4 md:p-5 z-20">
+                                    <div class="flex items-center space-x-2 text-brand-gold text-[10px] font-bold uppercase tracking-widest mb-1">
+                                        <span>Indie Dance</span>
+                                        <span class="text-brand-white/30">&bull;</span>
+                                        <span>Leavin&rsquo; the Room</span>
+                                    </div>
+                                    <h3 class="text-lg md:text-xl font-display font-bold text-brand-white group-hover:text-brand-teal transition-colors">NAIRO</h3>
+                                </div>
+
+                                <div class="play-overlay absolute inset-0 z-30 flex items-center justify-center opacity-0 transition-all duration-300 bg-brand-black/40 backdrop-blur-[2px] pointer-events-none">
+                                    <div class="w-12 h-12 rounded-full bg-brand-white flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                        <i class="fa-solid fa-play text-brand-black ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- LEAVIN' THE ROOM @ BRIDGE 48 — Valderrama -->
+                    <article class="session-card group md:col-span-6 relative bg-brand-surface rounded-2xl md:rounded-3xl overflow-hidden border border-brand-white/5 hover:border-brand-white/20 transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 0.4s;"
+                        data-artist="Valderrama" data-genres="Indie Dance" data-vibes="indie-dance bridge48" data-session="b48">
+                        <a href="https://youtu.be/D4Hc6bTMGL0" target="_blank" rel="noopener" class="block">
+                            <div class="relative aspect-video overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent z-10"></div>
+                                <img src="thumbs/bridge48/valderrama.jpg" alt="Valderrama at Bridge 48" loading="lazy" class="card-image w-full h-full object-cover transition-transform duration-700 ease-out">
+
+                                <div class="absolute top-3 md:top-4 left-3 md:left-4 z-20 flex gap-2">
+                                    <span class="px-2 py-1 bg-brand-gold/90 backdrop-blur-md rounded text-[10px] font-bold uppercase tracking-wider text-brand-black shadow-lg">
+                                        Bridge 48
+                                    </span>
+                                </div>
+
+                                <div class="absolute bottom-0 left-0 right-0 p-4 md:p-5 z-20">
+                                    <div class="flex items-center space-x-2 text-brand-gold text-[10px] font-bold uppercase tracking-widest mb-1">
+                                        <span>Indie Dance</span>
+                                        <span class="text-brand-white/30">&bull;</span>
+                                        <span>Leavin&rsquo; the Room</span>
+                                    </div>
+                                    <h3 class="text-lg md:text-xl font-display font-bold text-brand-white group-hover:text-brand-gold transition-colors">VALDERRAMA</h3>
+                                </div>
+
+                                <div class="play-overlay absolute inset-0 z-30 flex items-center justify-center opacity-0 transition-all duration-300 bg-brand-black/40 backdrop-blur-[2px] pointer-events-none">
+                                    <div class="w-12 h-12 rounded-full bg-brand-white flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                        <i class="fa-solid fa-play text-brand-black ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- LEAVIN' THE ROOM @ BRIDGE 48 — DJ Tortuga -->
+                    <article class="session-card group md:col-span-6 relative bg-brand-surface rounded-2xl md:rounded-3xl overflow-hidden border border-brand-white/5 hover:border-brand-white/20 transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 0.5s;"
+                        data-artist="DJ Tortuga" data-genres="Funk Disco House" data-vibes="house bridge48" data-session="b48">
+                        <a href="https://youtu.be/AfY2lzSK3bw" target="_blank" rel="noopener" class="block">
+                            <div class="relative aspect-video overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent z-10"></div>
+                                <img src="thumbs/bridge48/dj-tortuga.jpg" alt="DJ Tortuga at Bridge 48" loading="lazy" class="card-image w-full h-full object-cover transition-transform duration-700 ease-out">
+
+                                <div class="absolute top-3 md:top-4 left-3 md:left-4 z-20 flex gap-2">
+                                    <span class="px-2 py-1 bg-brand-gold/90 backdrop-blur-md rounded text-[10px] font-bold uppercase tracking-wider text-brand-black shadow-lg">
+                                        Bridge 48
+                                    </span>
+                                </div>
+
+                                <div class="absolute bottom-0 left-0 right-0 p-4 md:p-5 z-20">
+                                    <div class="flex items-center space-x-2 text-brand-gold text-[10px] font-bold uppercase tracking-widest mb-1">
+                                        <span>Funk &amp; Disco House</span>
+                                        <span class="text-brand-white/30">&bull;</span>
+                                        <span>Leavin&rsquo; the Room</span>
+                                    </div>
+                                    <h3 class="text-lg md:text-xl font-display font-bold text-brand-white group-hover:text-rose-400 transition-colors">DJ TORTUGA</h3>
+                                </div>
+
+                                <div class="play-overlay absolute inset-0 z-30 flex items-center justify-center opacity-0 transition-all duration-300 bg-brand-black/40 backdrop-blur-[2px] pointer-events-none">
+                                    <div class="w-12 h-12 rounded-full bg-brand-white flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                        <i class="fa-solid fa-play text-brand-black ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- LEAVIN' THE ROOM @ BRIDGE 48 — Charlins -->
+                    <article class="session-card group md:col-span-6 relative bg-brand-surface rounded-2xl md:rounded-3xl overflow-hidden border border-brand-white/5 hover:border-brand-white/20 transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 0.6s;"
+                        data-artist="Charlins" data-genres="Progressive House Melodic House" data-vibes="house bridge48" data-session="b48">
+                        <a href="https://youtu.be/dqgOX_mWxR8" target="_blank" rel="noopener" class="block">
+                            <div class="relative aspect-video overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent z-10"></div>
+                                <img src="thumbs/bridge48/charlins.jpg" alt="Charlins at Bridge 48" loading="lazy" class="card-image w-full h-full object-cover transition-transform duration-700 ease-out">
+
+                                <div class="absolute top-3 md:top-4 left-3 md:left-4 z-20 flex gap-2">
+                                    <span class="px-2 py-1 bg-brand-gold/90 backdrop-blur-md rounded text-[10px] font-bold uppercase tracking-wider text-brand-black shadow-lg">
+                                        Bridge 48
+                                    </span>
+                                </div>
+
+                                <div class="absolute bottom-0 left-0 right-0 p-4 md:p-5 z-20">
+                                    <div class="flex items-center space-x-2 text-brand-gold text-[10px] font-bold uppercase tracking-widest mb-1">
+                                        <span>Progressive &amp; Melodic House</span>
+                                        <span class="text-brand-white/30">&bull;</span>
+                                        <span>Leavin&rsquo; the Room</span>
+                                    </div>
+                                    <h3 class="text-lg md:text-xl font-display font-bold text-brand-white group-hover:text-brand-purple transition-colors">CHARLINS</h3>
+                                </div>
+
+                                <div class="play-overlay absolute inset-0 z-30 flex items-center justify-center opacity-0 transition-all duration-300 bg-brand-black/40 backdrop-blur-[2px] pointer-events-none">
+                                    <div class="w-12 h-12 rounded-full bg-brand-white flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                        <i class="fa-solid fa-play text-brand-black ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- LEAVIN' THE ROOM @ BRIDGE 48 — Mats + Ma House B3B -->
+                    <article class="session-card group md:col-span-6 relative bg-brand-surface rounded-2xl md:rounded-3xl overflow-hidden border border-brand-white/5 hover:border-brand-white/20 transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 0.7s;"
+                        data-artist="Mats + Ma House B3B" data-genres="House" data-vibes="house bridge48" data-session="b48">
+                        <a href="https://youtu.be/ro6n1MVRhWU" target="_blank" rel="noopener" class="block">
+                            <div class="relative aspect-video overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent z-10"></div>
+                                <img src="thumbs/bridge48/mats-ma-house.jpg" alt="Mats + Ma House B3B at Bridge 48" loading="lazy" class="card-image w-full h-full object-cover transition-transform duration-700 ease-out">
+
+                                <div class="absolute top-3 md:top-4 left-3 md:left-4 z-20 flex gap-2">
+                                    <span class="px-2 py-1 bg-brand-gold/90 backdrop-blur-md rounded text-[10px] font-bold uppercase tracking-wider text-brand-black shadow-lg">
+                                        Bridge 48
+                                    </span>
+                                </div>
+
+                                <div class="absolute bottom-0 left-0 right-0 p-4 md:p-5 z-20">
+                                    <div class="flex items-center space-x-2 text-brand-gold text-[10px] font-bold uppercase tracking-widest mb-1">
+                                        <span>House</span>
+                                        <span class="text-brand-white/30">&bull;</span>
+                                        <span>Leavin&rsquo; the Room</span>
+                                    </div>
+                                    <h3 class="text-lg md:text-xl font-display font-bold text-brand-white group-hover:text-brand-gold transition-colors">MATS + MA HOUSE</h3>
+                                </div>
+
+                                <div class="play-overlay absolute inset-0 z-30 flex items-center justify-center opacity-0 transition-all duration-300 bg-brand-black/40 backdrop-blur-[2px] pointer-events-none">
+                                    <div class="w-12 h-12 rounded-full bg-brand-white flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                        <i class="fa-solid fa-play text-brand-black ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- SESSION 10 — FEATURED (Nuup B2B Valderrama) -->
+                    <article class="session-card group md:col-span-8 md:row-span-2 relative bg-brand-surface rounded-2xl md:rounded-3xl overflow-hidden border border-brand-white/5 hover:border-brand-white/20 transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 0.6s;"
+                        data-artist="Nuup B2B Valderrama" data-genres="Indie Dance Melodic House Deep House" data-vibes="indie-dance house" data-session="10">
+                        <a href="session-nuup-b2b-valderrama.html" class="featured-link block h-full flex flex-col">
+                            <!-- Image area: grows to fill available height -->
+                            <div class="featured-image relative flex-1 min-h-[200px] overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent z-10"></div>
+                                <img src="https://img.youtube.com/vi/UUWR6SZaU2I/maxresdefault.jpg" alt="Nuup B2B Valderrama Session" class="card-image absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out">
+
+                                <div class="absolute top-4 md:top-6 left-4 md:left-6 z-20 flex gap-2">
+                                    <span class="px-3 py-1 bg-brand-purple/90 backdrop-blur-md rounded text-xs font-bold uppercase tracking-wider text-white shadow-lg">
+                                        B2B
+                                    </span>
+                                    <span class="px-3 py-1 bg-brand-black/60 backdrop-blur-md rounded text-xs font-medium uppercase tracking-wider text-brand-white border border-brand-white/10">
+                                        #010
+                                    </span>
+                                </div>
+
+                                <!-- Compact overlay (hidden by default, shown when filtered) -->
+                                <div class="featured-overlay absolute bottom-0 left-0 right-0 p-4 md:p-5 z-20 hidden">
+                                    <div class="flex items-center space-x-2 text-brand-purple text-[10px] font-bold uppercase tracking-widest mb-1">
+                                        <span>Indie Dance</span>
+                                        <span class="text-brand-white/30">•</span>
+                                        <span>Melodic House</span>
+                                    </div>
+                                    <h3 class="text-lg md:text-xl font-display font-bold text-brand-white group-hover:text-brand-purple transition-colors">NUUP B2B VALDERRAMA</h3>
+                                </div>
+
+                                <!-- Play Button Center -->
+                                <div class="play-overlay absolute inset-0 z-20 flex items-center justify-center opacity-0 transition-all duration-300 transform scale-90 pointer-events-none">
+                                    <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-brand-white/10 backdrop-blur-md flex items-center justify-center border border-brand-white/30 shadow-2xl">
+                                        <i class="fa-solid fa-play text-brand-white text-2xl md:text-3xl ml-2"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Text area below image (hidden when filtered) -->
+                            <div class="featured-text p-5 md:p-8">
+                                <div class="flex items-center space-x-3 text-brand-purple text-xs font-bold uppercase tracking-widest mb-2 md:mb-3">
+                                    <span>Indie Dance</span>
+                                    <span class="w-1 h-1 rounded-full bg-brand-white/30"></span>
+                                    <span>Melodic House</span>
+                                    <span class="w-1 h-1 rounded-full bg-brand-white/30"></span>
+                                    <span>Deep House</span>
+                                </div>
+                                <h2 class="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-2 md:mb-3 text-brand-white group-hover:text-brand-purple transition-colors">NUUP B2B VALDERRAMA</h2>
+                                <p class="text-brand-white/60 text-sm md:text-base max-w-xl mb-4 md:mb-5 line-clamp-2">Freedom, groove, and a room fully connected to the moment. The last drop of the year, and one of the most meaningful nights we've ever had.</p>
+                                <span class="px-5 md:px-6 py-2.5 md:py-3 bg-brand-white text-brand-black font-bold rounded-full hover:bg-brand-gold transition-colors inline-flex items-center shadow-lg text-sm md:text-base">
+                                    <i class="fa-brands fa-youtube mr-2 text-xs md:text-sm"></i> Watch on YouTube
+                                </span>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- SESSION 9 — Marco Boarelli (4-col, stacks right of Nuup top) -->
+                    <article class="session-card group md:col-span-4 relative bg-brand-surface rounded-2xl md:rounded-3xl overflow-hidden border border-brand-white/5 hover:border-brand-white/20 transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 0.7s;"
+                        data-artist="Marco Boarelli" data-genres="Progressive House" data-vibes="house" data-session="9">
+                        <a href="session-marco-boarelli.html" class="block">
+                            <div class="relative aspect-video overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent z-10"></div>
+                                <img src="https://img.youtube.com/vi/Ivd6Lh5xJZw/maxresdefault.jpg" alt="Marco Boarelli Session" class="card-image w-full h-full object-cover transition-transform duration-700 ease-out">
+
+                                <div class="absolute top-3 md:top-4 left-3 md:left-4 z-20">
+                                    <span class="px-2 py-1 bg-brand-black/60 backdrop-blur-md rounded text-[10px] font-medium uppercase tracking-wider text-brand-white border border-brand-white/10">
+                                        #009
+                                    </span>
+                                </div>
+
+                                <div class="absolute bottom-0 left-0 right-0 p-4 md:p-5 z-20">
+                                    <div class="flex items-center space-x-2 text-brand-gold text-[10px] font-bold uppercase tracking-widest mb-1">
+                                        <span>Progressive House</span>
+                                    </div>
+                                    <h3 class="text-lg md:text-xl font-display font-bold text-brand-white group-hover:text-brand-gold transition-colors">MARCO BOARELLI</h3>
+                                </div>
+
+                                <div class="play-overlay absolute inset-0 z-30 flex items-center justify-center opacity-0 transition-all duration-300 bg-brand-black/40 backdrop-blur-[2px] pointer-events-none">
+                                    <div class="w-12 h-12 rounded-full bg-brand-white flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                        <i class="fa-solid fa-play text-brand-black ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- SESSION 8 — Ezera (4-col, stacks right of Nuup bottom) -->
+                    <article class="session-card group md:col-span-4 relative bg-brand-surface rounded-2xl md:rounded-3xl overflow-hidden border border-brand-white/5 hover:border-brand-white/20 transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 0.8s;"
+                        data-artist="Ezera" data-genres="Melodic Techno Future Rave" data-vibes="techno" data-session="8">
+                        <a href="session-ezera.html" class="block">
+                            <div class="relative aspect-video overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent z-10"></div>
+                                <img src="https://img.youtube.com/vi/llMg7pImNsU/maxresdefault.jpg" alt="Ezera Session" class="card-image w-full h-full object-cover transition-transform duration-700 ease-out">
+
+                                <div class="absolute top-3 md:top-4 left-3 md:left-4 z-20">
+                                    <span class="px-2 py-1 bg-brand-black/60 backdrop-blur-md rounded text-[10px] font-medium uppercase tracking-wider text-brand-white border border-brand-white/10">
+                                        #008
+                                    </span>
+                                </div>
+
+                                <div class="absolute bottom-0 left-0 right-0 p-4 md:p-5 z-20">
+                                    <div class="flex items-center space-x-2 text-rose-400 text-[10px] font-bold uppercase tracking-widest mb-1">
+                                        <span>Melodic Techno</span>
+                                    </div>
+                                    <h3 class="text-lg md:text-xl font-display font-bold text-brand-white group-hover:text-rose-400 transition-colors">EZERA</h3>
+                                </div>
+
+                                <div class="play-overlay absolute inset-0 z-30 flex items-center justify-center opacity-0 transition-all duration-300 bg-brand-black/40 backdrop-blur-[2px] pointer-events-none">
+                                    <div class="w-12 h-12 rounded-full bg-brand-white flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                        <i class="fa-solid fa-play text-brand-black ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- ============================================ -->
+                    <!-- ROW 2: Andrés (6-col) + Le Bulla (6-col) -->
+                    <!-- ============================================ -->
+
+                    <!-- SESSION 7 — Andrés Divitto -->
+                    <article class="session-card group md:col-span-6 relative bg-brand-surface rounded-2xl md:rounded-3xl overflow-hidden border border-brand-white/5 hover:border-brand-white/20 transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 0.4s;"
+                        data-artist="Andrés Divitto" data-genres="House Organic House Deep House" data-vibes="house" data-session="7">
+                        <a href="session-andres-divitto.html" class="block">
+                            <div class="relative aspect-video overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent z-10"></div>
+                                <img src="https://img.youtube.com/vi/PxE58mDfmA4/maxresdefault.jpg" alt="Andrés Divitto Session" class="card-image w-full h-full object-cover transition-transform duration-700 ease-out">
+
+                                <div class="absolute top-3 md:top-4 left-3 md:left-4 z-20">
+                                    <span class="px-2 py-1 bg-brand-black/60 backdrop-blur-md rounded text-[10px] font-medium uppercase tracking-wider text-brand-white border border-brand-white/10">
+                                        #007
+                                    </span>
+                                </div>
+
+                                <div class="absolute bottom-0 left-0 right-0 p-4 md:p-5 z-20">
+                                    <div class="flex items-center space-x-2 text-brand-gold text-[10px] font-bold uppercase tracking-widest mb-1">
+                                        <span>Organic House</span>
+                                        <span class="text-brand-white/30">•</span>
+                                        <span>Deep</span>
+                                    </div>
+                                    <h3 class="text-lg md:text-xl font-display font-bold text-brand-white group-hover:text-brand-gold transition-colors">ANDRÉS DIVITTO</h3>
+                                </div>
+
+                                <div class="play-overlay absolute inset-0 z-30 flex items-center justify-center opacity-0 transition-all duration-300 bg-brand-black/40 backdrop-blur-[2px] pointer-events-none">
+                                    <div class="w-12 h-12 rounded-full bg-brand-white flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                        <i class="fa-solid fa-play text-brand-black ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- SESSION 6 — Le Bulla -->
+                    <article class="session-card group md:col-span-6 relative bg-brand-surface rounded-2xl md:rounded-3xl overflow-hidden border border-brand-white/5 hover:border-brand-white/20 transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 0.5s;"
+                        data-artist="Le Bulla" data-genres="House" data-vibes="house" data-session="6">
+                        <a href="session-le-bulla.html" class="block">
+                            <div class="relative aspect-video overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent z-10"></div>
+                                <img src="https://img.youtube.com/vi/sFto1Cpjzm8/maxresdefault.jpg" alt="Le Bulla Session" class="card-image w-full h-full object-cover transition-transform duration-700 ease-out">
+
+                                <div class="absolute top-3 md:top-4 left-3 md:left-4 z-20">
+                                    <span class="px-2 py-1 bg-brand-black/60 backdrop-blur-md rounded text-[10px] font-medium uppercase tracking-wider text-brand-white border border-brand-white/10">
+                                        #006
+                                    </span>
+                                </div>
+
+                                <div class="absolute bottom-0 left-0 right-0 p-4 md:p-5 z-20">
+                                    <div class="flex items-center space-x-2 text-brand-gold text-[10px] font-bold uppercase tracking-widest mb-1">
+                                        <span>House</span>
+                                    </div>
+                                    <h3 class="text-lg md:text-xl font-display font-bold text-brand-white group-hover:text-brand-gold transition-colors">LE BULLA</h3>
+                                </div>
+
+                                <div class="play-overlay absolute inset-0 z-30 flex items-center justify-center opacity-0 transition-all duration-300 bg-brand-black/40 backdrop-blur-[2px] pointer-events-none">
+                                    <div class="w-12 h-12 rounded-full bg-brand-white flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                        <i class="fa-solid fa-play text-brand-black ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- ============================================ -->
+                    <!-- ROW 3: Dubbelle (4-col) + Henry (4-col) + Entropia (4-col) -->
+                    <!-- ============================================ -->
+
+                    <!-- SESSION 5 — Dubbelle -->
+                    <article class="session-card group md:col-span-4 relative bg-brand-surface rounded-2xl md:rounded-3xl overflow-hidden border border-brand-white/5 hover:border-brand-white/20 transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 0.6s;"
+                        data-artist="Dubbelle" data-genres="Afro House Afro Techno" data-vibes="afro" data-session="5">
+                        <a href="session-dubbelle.html" class="block">
+                            <div class="relative aspect-video overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent z-10"></div>
+                                <img src="https://img.youtube.com/vi/pLGyy7kkAHk/maxresdefault.jpg" alt="Dubbelle Session" class="card-image w-full h-full object-cover transition-transform duration-700 ease-out">
+
+                                <div class="absolute top-3 md:top-4 left-3 md:left-4 z-20">
+                                    <span class="px-2 py-1 bg-brand-black/60 backdrop-blur-md rounded text-[10px] font-medium uppercase tracking-wider text-brand-white border border-brand-white/10">
+                                        #005
+                                    </span>
+                                </div>
+
+                                <div class="absolute bottom-0 left-0 right-0 p-4 md:p-5 z-20">
+                                    <div class="flex items-center space-x-2 text-brand-teal text-[10px] font-bold uppercase tracking-widest mb-1">
+                                        <span>Afro House</span>
+                                        <span class="text-brand-white/30">•</span>
+                                        <span>Afro Techno</span>
+                                    </div>
+                                    <h3 class="text-lg md:text-xl font-display font-bold text-brand-white group-hover:text-brand-teal transition-colors">DUBBELLE</h3>
+                                </div>
+
+                                <div class="play-overlay absolute inset-0 z-30 flex items-center justify-center opacity-0 transition-all duration-300 bg-brand-black/40 backdrop-blur-[2px] pointer-events-none">
+                                    <div class="w-12 h-12 rounded-full bg-brand-white flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                        <i class="fa-solid fa-play text-brand-black ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- SESSION 4 — Henry Carlin -->
+                    <article class="session-card group md:col-span-4 relative bg-brand-surface rounded-2xl md:rounded-3xl overflow-hidden border border-brand-white/5 hover:border-brand-white/20 transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 0.7s;"
+                        data-artist="Henry Carlin" data-genres="Indie Dance" data-vibes="indie-dance" data-session="4">
+                        <a href="session-henry-carlin.html" class="block">
+                            <div class="relative aspect-video overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent z-10"></div>
+                                <img src="https://img.youtube.com/vi/892ogtvgm5M/maxresdefault.jpg" alt="Henry Carlin Session" class="card-image w-full h-full object-cover transition-transform duration-700 ease-out">
+
+                                <div class="absolute top-3 md:top-4 left-3 md:left-4 z-20">
+                                    <span class="px-2 py-1 bg-brand-black/60 backdrop-blur-md rounded text-[10px] font-medium uppercase tracking-wider text-brand-white border border-brand-white/10">
+                                        #004
+                                    </span>
+                                </div>
+
+                                <div class="absolute bottom-0 left-0 right-0 p-4 md:p-5 z-20">
+                                    <div class="flex items-center space-x-2 text-brand-purple text-[10px] font-bold uppercase tracking-widest mb-1">
+                                        <span>Indie Dance</span>
+                                    </div>
+                                    <h3 class="text-lg md:text-xl font-display font-bold text-brand-white group-hover:text-brand-purple transition-colors">HENRY CARLIN</h3>
+                                </div>
+
+                                <div class="play-overlay absolute inset-0 z-30 flex items-center justify-center opacity-0 transition-all duration-300 bg-brand-black/40 backdrop-blur-[2px] pointer-events-none">
+                                    <div class="w-12 h-12 rounded-full bg-brand-white flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                        <i class="fa-solid fa-play text-brand-black ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- SESSION 3 — Entropia -->
+                    <article class="session-card group md:col-span-4 relative bg-brand-surface rounded-2xl md:rounded-3xl overflow-hidden border border-brand-white/5 hover:border-brand-white/20 transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 0.8s;"
+                        data-artist="Entropia" data-genres="Breakbeat House Acid Garage" data-vibes="breakbeat house" data-session="3">
+                        <a href="https://youtu.be/o1pChRTfiCY" target="_blank" class="block">
+                            <div class="relative aspect-video overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent z-10"></div>
+                                <img src="https://img.youtube.com/vi/o1pChRTfiCY/maxresdefault.jpg" alt="Entropia Session" class="card-image w-full h-full object-cover transition-transform duration-700 ease-out">
+
+                                <div class="absolute top-3 md:top-4 left-3 md:left-4 z-20">
+                                    <span class="px-2 py-1 bg-brand-black/60 backdrop-blur-md rounded text-[10px] font-medium uppercase tracking-wider text-brand-white border border-brand-white/10">
+                                        #003
+                                    </span>
+                                </div>
+
+                                <div class="absolute bottom-0 left-0 right-0 p-4 md:p-5 z-20">
+                                    <div class="flex flex-wrap gap-2 text-brand-white text-[10px] font-bold uppercase tracking-widest mb-1">
+                                        <span>Breakbeat</span>
+                                        <span class="text-brand-white/30">•</span>
+                                        <span>Acid</span>
+                                    </div>
+                                    <h3 class="text-lg md:text-xl font-display font-bold text-brand-white group-hover:text-brand-white/80 transition-colors">ENTROPIA</h3>
+                                </div>
+
+                                <div class="play-overlay absolute inset-0 z-30 flex items-center justify-center opacity-0 transition-all duration-300 bg-brand-black/40 backdrop-blur-[2px] pointer-events-none">
+                                    <div class="w-12 h-12 rounded-full bg-brand-white flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                        <i class="fa-solid fa-play text-brand-black ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- ============================================ -->
+                    <!-- ROW 4: Keyblow (6-col) + Omaya (6-col) -->
+                    <!-- ============================================ -->
+
+                    <!-- SESSION 2 — Keyblow -->
+                    <article class="session-card group md:col-span-6 relative bg-brand-surface rounded-2xl md:rounded-3xl overflow-hidden border border-brand-white/5 hover:border-brand-white/20 transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 0.3s;"
+                        data-artist="Keyblow" data-genres="Melodic Techno Indie Dance" data-vibes="techno indie-dance" data-session="2">
+                        <a href="session-keyblow.html" class="block">
+                            <div class="relative aspect-video overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent z-10"></div>
+                                <img src="https://img.youtube.com/vi/QTKRufMAuMc/maxresdefault.jpg" alt="Keyblow Session" class="card-image w-full h-full object-cover transition-transform duration-700 ease-out">
+
+                                <div class="absolute top-3 md:top-4 left-3 md:left-4 z-20">
+                                    <span class="px-2 py-1 bg-brand-black/60 backdrop-blur-md rounded text-[10px] font-medium uppercase tracking-wider text-brand-white border border-brand-white/10">
+                                        #002
+                                    </span>
+                                </div>
+
+                                <div class="absolute bottom-0 left-0 right-0 p-4 md:p-5 z-20">
+                                    <div class="flex items-center space-x-2 text-rose-400 text-[10px] font-bold uppercase tracking-widest mb-1">
+                                        <span>Melodic Techno</span>
+                                        <span class="text-brand-white/30">•</span>
+                                        <span>Indie Dance</span>
+                                    </div>
+                                    <h3 class="text-lg md:text-xl font-display font-bold text-brand-white group-hover:text-rose-400 transition-colors">KEYBLOW</h3>
+                                </div>
+
+                                <div class="play-overlay absolute inset-0 z-30 flex items-center justify-center opacity-0 transition-all duration-300 bg-brand-black/40 backdrop-blur-[2px] pointer-events-none">
+                                    <div class="w-12 h-12 rounded-full bg-brand-white flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                        <i class="fa-solid fa-play text-brand-black ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- SESSION 1 — Omaya -->
+                    <article class="session-card group md:col-span-6 relative bg-brand-surface rounded-2xl md:rounded-3xl overflow-hidden border border-brand-white/5 hover:border-brand-white/20 transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 0.4s;"
+                        data-artist="Omaya" data-genres="Afro House Indie Dance Live Set" data-vibes="afro indie-dance" data-session="1">
+                        <a href="session-omaya.html" class="block">
+                            <div class="relative aspect-video overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent z-10"></div>
+                                <img src="https://img.youtube.com/vi/tckwNO78RaI/maxresdefault.jpg" alt="Omaya Session" class="card-image w-full h-full object-cover transition-transform duration-700 ease-out">
+
+                                <div class="absolute top-3 md:top-4 left-3 md:left-4 z-20 flex gap-2">
+                                    <span class="px-2 py-1 bg-red-500/90 backdrop-blur-md rounded text-[10px] font-bold uppercase tracking-wider text-white shadow-lg">
+                                        Live Set
+                                    </span>
+                                    <span class="px-2 py-1 bg-brand-black/60 backdrop-blur-md rounded text-[10px] font-medium uppercase tracking-wider text-brand-white border border-brand-white/10">
+                                        #001
+                                    </span>
+                                </div>
+
+                                <div class="absolute bottom-0 left-0 right-0 p-4 md:p-5 z-20">
+                                    <div class="flex items-center space-x-2 text-brand-teal text-[10px] font-bold uppercase tracking-widest mb-1">
+                                        <span>Afro House</span>
+                                        <span class="text-brand-white/30">•</span>
+                                        <span>Indie Dance</span>
+                                    </div>
+                                    <h3 class="text-lg md:text-xl font-display font-bold text-brand-white group-hover:text-brand-teal transition-colors">OMAYA</h3>
+                                </div>
+
+                                <div class="play-overlay absolute inset-0 z-30 flex items-center justify-center opacity-0 transition-all duration-300 bg-brand-black/40 backdrop-blur-[2px] pointer-events-none">
+                                    <div class="w-12 h-12 rounded-full bg-brand-white flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                        <i class="fa-solid fa-play text-brand-black ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- ============================================ -->
+                    <!-- ROW 5: Benny (6-col) + Rafael Paste (6-col) — Live sessions -->
+                    <!-- ============================================ -->
+
+                    <!-- SESSION 11 — Benny (Live Set) -->
+                    <article class="session-card group md:col-span-6 relative bg-brand-surface rounded-2xl md:rounded-3xl overflow-hidden border border-brand-white/5 hover:border-brand-white/20 transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 0.5s;"
+                        data-artist="Benny" data-genres="House Rio" data-vibes="house" data-session="11">
+                        <a href="https://youtu.be/5wImLyql194" target="_blank" class="block">
+                            <div class="relative aspect-video overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent z-10"></div>
+                                <img src="https://img.youtube.com/vi/5wImLyql194/maxresdefault.jpg" alt="Benny Session" class="card-image w-full h-full object-cover transition-transform duration-700 ease-out">
+
+                                <div class="absolute top-3 md:top-4 left-3 md:left-4 z-20 flex gap-2">
+                                    <span class="px-2 py-1 bg-red-500/90 backdrop-blur-md rounded text-[10px] font-bold uppercase tracking-wider text-white shadow-lg">
+                                        Live Set
+                                    </span>
+                                    <span class="px-2 py-1 bg-brand-black/60 backdrop-blur-md rounded text-[10px] font-medium uppercase tracking-wider text-brand-white border border-brand-white/10">
+                                        #011
+                                    </span>
+                                </div>
+
+                                <div class="absolute bottom-0 left-0 right-0 p-4 md:p-5 z-20">
+                                    <div class="flex items-center space-x-2 text-brand-gold text-[10px] font-bold uppercase tracking-widest mb-1">
+                                        <span>House</span>
+                                        <span class="text-brand-white/30">•</span>
+                                        <span>Rio Edition</span>
+                                    </div>
+                                    <h3 class="text-lg md:text-xl font-display font-bold text-brand-white group-hover:text-brand-gold transition-colors">BENNY</h3>
+                                </div>
+
+                                <div class="play-overlay absolute inset-0 z-30 flex items-center justify-center opacity-0 transition-all duration-300 bg-brand-black/40 backdrop-blur-[2px] pointer-events-none">
+                                    <div class="w-12 h-12 rounded-full bg-brand-white flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                        <i class="fa-solid fa-play text-brand-black ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- SESSION 12 — Rafael Paste (Live Set) -->
+                    <article class="session-card group md:col-span-6 relative bg-brand-surface rounded-2xl md:rounded-3xl overflow-hidden border border-brand-white/5 hover:border-brand-white/20 transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 0.6s;"
+                        data-artist="Rafael Paste" data-genres="House" data-vibes="house" data-session="12">
+                        <a href="https://youtu.be/TVDlgcok6zo" target="_blank" class="block">
+                            <div class="relative aspect-video overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent z-10"></div>
+                                <img src="https://img.youtube.com/vi/TVDlgcok6zo/maxresdefault.jpg" alt="Rafael Paste Session" class="card-image w-full h-full object-cover transition-transform duration-700 ease-out">
+
+                                <div class="absolute top-3 md:top-4 left-3 md:left-4 z-20 flex gap-2">
+                                    <span class="px-2 py-1 bg-red-500/90 backdrop-blur-md rounded text-[10px] font-bold uppercase tracking-wider text-white shadow-lg">
+                                        Live Set
+                                    </span>
+                                    <span class="px-2 py-1 bg-brand-black/60 backdrop-blur-md rounded text-[10px] font-medium uppercase tracking-wider text-brand-white border border-brand-white/10">
+                                        #012
+                                    </span>
+                                </div>
+
+                                <div class="absolute bottom-0 left-0 right-0 p-4 md:p-5 z-20">
+                                    <div class="flex items-center space-x-2 text-brand-gold text-[10px] font-bold uppercase tracking-widest mb-1">
+                                        <span>House</span>
+                                        <span class="text-brand-white/30">•</span>
+                                        <span>Live Set</span>
+                                    </div>
+                                    <h3 class="text-lg md:text-xl font-display font-bold text-brand-white group-hover:text-brand-gold transition-colors">RAFAEL PASTE</h3>
+                                </div>
+
+                                <div class="play-overlay absolute inset-0 z-30 flex items-center justify-center opacity-0 transition-all duration-300 bg-brand-black/40 backdrop-blur-[2px] pointer-events-none">
+                                    <div class="w-12 h-12 rounded-full bg-brand-white flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                        <i class="fa-solid fa-play text-brand-black ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                </div>
+
+                <!-- Session Count -->
+                <div class="mt-16 md:mt-20 text-center">
+                    <p class="text-brand-white/40 text-sm font-mono" id="session-count">Showing 24 of 24 Sessions</p>
+                    <p class="text-brand-white/20 text-xs mt-2">1 unreleased session coming soon</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- DISCOVERY CTA SECTION -->
+        <section class="py-24 md:py-32 px-6 relative mt-16 overflow-hidden">
+            <div class="absolute inset-0 bg-brand-surface/30 backdrop-blur-sm border-t border-brand-white/5"></div>
+
+            <div class="max-w-4xl mx-auto text-center relative z-10">
+                <div class="inline-block mb-6">
+                    <div class="w-16 h-16 rounded-full bg-brand-black border border-brand-surface vinyl-grooves animate-spin-slow flex items-center justify-center mx-auto shadow-2xl">
+                        <div class="w-6 h-6 rounded-full bg-holographic opacity-80"></div>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl md:text-5xl lg:text-6xl font-display font-bold mb-6">A RECORDING FOR THE MEMORIES</h2>
+                <p class="text-lg md:text-xl text-brand-white/60 font-light mb-10 max-w-2xl mx-auto">
+                    Wouldn't it be amazing to look back years from now and see how much fun we were having?
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
+                    <a href="https://www.youtube.com/@AirfryerCollective" target="_blank" class="px-8 py-4 bg-brand-white text-brand-black font-bold rounded-full hover:bg-brand-gold transition-all shadow-lg hover:shadow-glow hover:-translate-y-1 flex items-center text-sm md:text-base">
+                        <i class="fa-brands fa-youtube mr-3 text-lg"></i> Subscribe on YouTube
+                    </a>
+                    <a href="https://instagram.com/airfryer_collective" target="_blank" class="px-8 py-4 border border-brand-white/20 rounded-full text-brand-white hover:bg-brand-white hover:text-brand-black transition-all font-medium text-sm md:text-base flex items-center">
+                        <i class="fa-brands fa-instagram mr-3 text-lg"></i> Join the Community
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-dark py-12 px-6 border-t border-brand-white/5">
+        <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3 mb-6 md:mb-0">
+                <div class="w-8 h-8 overflow-hidden flex-shrink-0" style="margin-top: -4px;">
+                    <img src="mascot-white.png" alt="Airfryer Collective" class="w-full object-cover object-top" style="height: 135%; margin-top: -5%;">
+                </div>
+                <span class="font-display font-bold text-lg tracking-tight">AIRFRYER <span class="text-brand-white/70">COLLECTIVE</span></span>
+            </div>
+
+            <div class="flex items-center space-x-8 mb-6 md:mb-0">
+                <a href="https://instagram.com/airfryer_collective" target="_blank" class="text-brand-white/50 hover:text-brand-gold transition-colors text-sm">Instagram</a>
+                <a href="https://www.youtube.com/@AirfryerCollective" target="_blank" class="text-brand-white/50 hover:text-brand-gold transition-colors text-sm">YouTube</a>
+                <a href="mailto:airfryercollective@gmail.com" class="text-brand-white/50 hover:text-brand-gold transition-colors text-sm">Email</a>
+            </div>
+
+            <div class="text-brand-white/30 text-xs text-center md:text-right">
+                <p>&copy; 2026 Airfryer Collective. Barcelona.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-brand-black/80', 'backdrop-blur-md', 'shadow-lg');
+                navbar.classList.remove('py-6');
+                navbar.classList.add('py-4');
+            } else {
+                navbar.classList.remove('bg-brand-black/80', 'bg-brand-black', 'backdrop-blur-md', 'shadow-lg');
+                navbar.classList.remove('py-4');
+                navbar.classList.add('py-6');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            const navbar = document.getElementById('navbar');
+            if (!mobileMenu.classList.contains('hidden')) {
+                navbar.classList.add('bg-brand-black', 'h-screen', 'overflow-hidden');
+                document.body.classList.add('overflow-hidden');
+            } else {
+                navbar.classList.remove('bg-brand-black', 'h-screen', 'overflow-hidden');
+                document.body.classList.remove('overflow-hidden');
+            }
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
+        });
+
+        // ============================================
+        // FILTER BY VIBE
+        // ============================================
+        const filterButtons = document.querySelectorAll('.vibe-filter');
+        const sessionCards = document.querySelectorAll('.session-card');
+        const noResults = document.getElementById('no-results');
+        const sessionCount = document.getElementById('session-count');
+        let activeVibe = 'all';
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Update active state
+                filterButtons.forEach(b => {
+                    b.classList.remove('active', 'bg-brand-white', 'text-brand-black');
+                    b.classList.add('bg-brand-surface', 'text-brand-white/70');
+                });
+                this.classList.add('active', 'bg-brand-white', 'text-brand-black');
+                this.classList.remove('bg-brand-surface', 'text-brand-white/70');
+
+                activeVibe = this.dataset.vibe;
+                applyFilters();
+            });
+        });
+
+        // ============================================
+        // SEARCH
+        // ============================================
+        const searchInput = document.getElementById('search-input');
+        let searchQuery = '';
+
+        searchInput.addEventListener('input', function() {
+            searchQuery = this.value.toLowerCase().trim();
+            applyFilters();
+        });
+
+        // ============================================
+        // COMBINED FILTER + SEARCH LOGIC
+        // ============================================
+        function applyFilters() {
+            let visibleCount = 0;
+            const isFiltered = activeVibe !== 'all' || searchQuery !== '';
+            const grid = document.getElementById('sessions-grid');
+
+            sessionCards.forEach(card => {
+                const artist = card.dataset.artist.toLowerCase();
+                const genres = card.dataset.genres.toLowerCase();
+                const vibes = card.dataset.vibes;
+
+                // Check vibe filter
+                const matchesVibe = activeVibe === 'all' || vibes.includes(activeVibe);
+
+                // Check search query
+                const matchesSearch = searchQuery === '' ||
+                    artist.includes(searchQuery) ||
+                    genres.includes(searchQuery);
+
+                if (matchesVibe && matchesSearch) {
+                    card.style.display = '';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Uniform grid when filtered, editorial layout when showing all
+            if (isFiltered) {
+                grid.classList.add('grid-filtered');
+            } else {
+                grid.classList.remove('grid-filtered');
+            }
+
+            // Show/hide no results message
+            if (visibleCount === 0) {
+                noResults.classList.add('visible');
+            } else {
+                noResults.classList.remove('visible');
+            }
+
+            // Update count
+            sessionCount.textContent = `Showing ${visibleCount} of ${sessionCards.length} Sessions`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dubbelle — Session #005 | Airfryer Collective</title>
+    <meta name="description" content="Brazilian duo, Barcelona-based. One of the best vibes we've had. Everyone dancing, everyone connected.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            black: '#1A1714',
+                            white: '#EDE6DC',
+                            gold: '#C4956B',
+                            teal: '#7BA8A0',
+                            purple: '#9B7EB8',
+                            dark: '#12100E',
+                            surface: '#24201C',
+                            surfaceHighlight: '#2E2A25'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['DM Sans', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'holographic': 'linear-gradient(135deg, #C4956B 0%, #9B7EB8 50%, #7BA8A0 100%)',
+                        'vinyl-shine': 'conic-gradient(from 180deg at 50% 50%, rgba(255,255,255,0.1) 0deg, rgba(255,255,255,0) 60deg, rgba(255,255,255,0.1) 120deg, rgba(255,255,255,0) 180deg, rgba(255,255,255,0.1) 240deg, rgba(255,255,255,0) 300deg, rgba(255,255,255,0.1) 360deg)',
+                    },
+                    animation: {
+                        'spin-slow': 'spin 8s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: 0 },
+                            '100%': { transform: 'translateY(0)', opacity: 1 },
+                        },
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(196, 149, 107, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        body {
+            background-color: #1A1714;
+            color: #EDE6DC;
+            font-family: 'DM Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.07;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        .vinyl-grooves {
+            background: repeating-radial-gradient(
+                #12100E,
+                #12100E 2px,
+                #24201C 3px,
+                #24201C 4px
+            );
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-panel {
+            background: rgba(36, 32, 28, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(237, 230, 220, 0.05);
+        }
+        .glass-card {
+            background: rgba(36, 32, 28, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(237, 230, 220, 0.08);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: rgba(196, 149, 107, 0.3);
+            background: rgba(36, 32, 28, 0.8);
+            transform: translateY(-5px);
+        }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-gold selection:text-brand-black">
+
+    <!-- Global Grain Overlay -->
+    <div class="grain-overlay"></div>
+
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-6 transition-all duration-300" id="navbar">
+        <div class="max-w-[1440px] mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 overflow-hidden flex-shrink-0 group-hover:scale-110 transition-transform duration-300" style="margin-top: -4px;">
+                    <img src="mascot-white.png" alt="Airfryer Collective" class="w-full object-cover object-top" style="height: 135%; margin-top: -5%;">
+                </div>
+                <span class="font-display font-bold text-xl tracking-tight text-brand-white">AIRFRYER <span class="text-brand-white/70">COLLECTIVE</span></span>
+            </a>
+
+            <div class="hidden lg:flex items-center space-x-1">
+                <div class="glass-panel px-2 py-1.5 rounded-full flex items-center space-x-1">
+                    <a href="index.html" class="px-4 py-2 rounded-full text-xs font-bold text-brand-white/70 hover:text-brand-white hover:bg-brand-white/5 transition-all whitespace-nowrap">HOME</a>
+                    <a href="sessions.html" class="px-4 py-2 rounded-full text-xs font-bold text-brand-white/70 hover:text-brand-white hover:bg-brand-white/5 transition-all whitespace-nowrap">SESSIONS</a>
+                    <a href="index.html#about" class="px-4 py-2 rounded-full text-xs font-bold text-brand-white/70 hover:text-brand-white hover:bg-brand-white/5 transition-all whitespace-nowrap">ABOUT</a>
+                    <a href="index.html#artists" class="px-4 py-2 rounded-full text-xs font-bold text-brand-white/70 hover:text-brand-white hover:bg-brand-white/5 transition-all whitespace-nowrap">THE COMMUNITY</a>
+                    <a href="index.html#events" class="px-4 py-2 rounded-full text-xs font-bold text-brand-white/70 hover:text-brand-white hover:bg-brand-white/5 transition-all whitespace-nowrap">EVENTS</a>
+                    <a href="/partnerships" class="px-4 py-2 rounded-full text-xs font-bold text-brand-white/70 hover:text-brand-white hover:bg-brand-white/5 transition-all whitespace-nowrap">PARTNERSHIPS</a>
+                </div>
+                <a href="index.html#contact" class="ml-4 px-6 py-3.5 rounded-full bg-brand-white text-brand-black text-xs font-bold hover:bg-brand-gold transition-all duration-300 shadow-lg hover:shadow-glow transform hover:-translate-y-0.5">
+                    CONTACT
+                </a>
+            </div>
+
+            <button id="mobile-menu-btn" class="lg:hidden text-brand-white">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden lg:hidden mt-4 pb-4 border-t border-brand-white/10 pt-4">
+            <div class="flex flex-col space-y-4">
+                <a href="index.html" class="text-sm font-bold text-brand-white/70 hover:text-brand-white transition-colors">HOME</a>
+                <a href="sessions.html" class="text-sm font-bold text-brand-white/70 hover:text-brand-white transition-colors">SESSIONS</a>
+                <a href="index.html#about" class="text-sm font-bold text-brand-white/70 hover:text-brand-white transition-colors">ABOUT</a>
+                <a href="index.html#artists" class="text-sm font-bold text-brand-white/70 hover:text-brand-white transition-colors">THE COMMUNITY</a>
+                <a href="index.html#events" class="text-sm font-bold text-brand-white/70 hover:text-brand-white transition-colors">EVENTS</a>
+                <a href="/partnerships" class="text-sm font-bold text-brand-white/70 hover:text-brand-white transition-colors">PARTNERSHIPS</a>
+                <a href="index.html#contact" class="text-sm font-bold text-brand-white hover:text-brand-gold transition-colors">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="relative z-0">
+
+        <!-- HERO SECTION WITH VIDEO PLAYER -->
+        <section class="relative min-h-[90vh] flex items-end pb-20 pt-32 px-6 overflow-hidden" id="hero">
+            <!-- Background Image Blur -->
+            <div class="absolute inset-0 z-0">
+                <img src="https://img.youtube.com/vi/pLGyy7kkAHk/maxresdefault.jpg" alt="Background" class="w-full h-full object-cover opacity-20 blur-[100px] scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/80 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-brand-black via-transparent to-brand-black/50"></div>
+            </div>
+
+            <div class="max-w-[1440px] mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+
+                <!-- Video Player Container (Left/Center) -->
+                <div class="lg:col-span-8 relative group">
+                    <!-- Session Number Badge -->
+                    <div class="flex items-center space-x-3 mb-4 animate-slide-up opacity-0" style="animation-delay: 0.1s;">
+                        <span class="text-brand-gold text-xs font-bold tracking-[0.2em] uppercase">Session #005</span>
+                        <span class="w-12 h-[1px] bg-brand-white/20"></span>
+                        <span class="text-brand-white/50 text-xs">2025</span>
+                    </div>
+
+                    <!-- Main Player Card -->
+                    <div class="relative w-full aspect-video rounded-3xl overflow-hidden shadow-2xl border border-brand-white/10 group animate-slide-up opacity-0" style="animation-delay: 0.2s;" id="player-container">
+                        <!-- Thumbnail Image -->
+                        <img src="https://img.youtube.com/vi/pLGyy7kkAHk/maxresdefault.jpg" alt="Dubbelle Session" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" id="video-thumbnail">
+
+                        <!-- Play Button Overlay -->
+                        <div class="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-all duration-500 flex items-center justify-center cursor-pointer" id="playTrigger">
+                            <div class="w-24 h-24 rounded-full bg-brand-white/10 backdrop-blur-md border border-brand-white/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-[0_0_40px_rgba(196,149,107,0.2)]">
+                                <i class="fa-solid fa-play text-brand-white text-3xl ml-2"></i>
+                            </div>
+                        </div>
+
+                        <!-- Video Iframe (Hidden initially) -->
+                        <iframe id="videoPlayer" class="absolute inset-0 w-full h-full hidden" src="" title="Dubbelle — Airfryer Collective Session #005" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+
+                    <!-- Credibility Block Below Video -->
+                    <div class="mt-6 flex flex-wrap items-center gap-4 text-xs font-medium text-brand-white/50 animate-slide-up opacity-0" style="animation-delay: 0.3s;">
+                        <span class="flex items-center"><i class="fa-solid fa-video text-brand-gold mr-2"></i> Professional Recording</span>
+                        <span class="w-1 h-1 rounded-full bg-brand-white/20"></span>
+                        <span class="flex items-center"><i class="fa-solid fa-users text-brand-teal mr-2"></i> Intimate Crowd</span>
+                        <span class="w-1 h-1 rounded-full bg-brand-white/20"></span>
+                        <span class="flex items-center"><i class="fa-solid fa-location-dot text-brand-purple mr-2"></i> Barcelona Living Room</span>
+                    </div>
+                </div>
+
+                <!-- Session Info (Right Side) -->
+                <div class="lg:col-span-4 flex flex-col justify-end pb-4 animate-slide-up opacity-0" style="animation-delay: 0.4s;">
+                    <!-- Genres -->
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-brand-surface border border-brand-white/10 rounded-full text-[10px] font-bold uppercase tracking-wider text-brand-gold">Afro House</span>
+                        <span class="px-3 py-1 bg-brand-surface border border-brand-white/10 rounded-full text-[10px] font-bold uppercase tracking-wider text-brand-teal">Afro Techno</span>
+                    </div>
+
+                    <h1 class="text-5xl lg:text-6xl font-display font-bold text-brand-white leading-[0.9] mb-6">
+                        DUBBELLE
+                    </h1>
+
+                    <p class="text-brand-white/60 text-lg leading-relaxed mb-8 border-l-2 border-brand-white/10 pl-4">
+                        Brazilian duo, Barcelona-based. One of the best vibes we've had. Everyone dancing, everyone connected.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-col gap-4">
+                        <a href="https://www.youtube.com/watch?v=pLGyy7kkAHk" target="_blank" class="w-full py-4 bg-brand-white text-brand-black font-bold rounded-full hover:bg-brand-gold transition-all flex items-center justify-center group text-center">
+                            <i class="fa-brands fa-youtube mr-2 text-lg group-hover:text-red-600 transition-colors"></i> Watch on YouTube
+                        </a>
+                        <a href="sessions.html" class="w-full py-4 border border-brand-white/20 rounded-full text-brand-white hover:bg-brand-white/5 transition-all font-medium text-sm flex items-center justify-center">
+                            <i class="fa-solid fa-arrow-left mr-2"></i> All Sessions
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ARTIST & EQUIPMENT SECTION -->
+        <section class="py-20 px-6 border-t border-brand-white/5 bg-brand-dark/50 relative">
+            <div class="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+
+                <!-- Artist Profile (Left) -->
+                <div class="lg:col-span-4 lg:sticky lg:top-32 h-fit">
+                    <!-- Mobile: collapsible -->
+                    <button id="artists-toggle" class="lg:hidden w-full flex items-center justify-between mb-6" onclick="toggleArtists()">
+                        <h3 class="text-brand-white/40 text-xs font-bold uppercase tracking-widest">About the Artist</h3>
+                        <i id="artists-chevron" class="fa-solid fa-chevron-down text-brand-white/30 text-xs transition-transform duration-300"></i>
+                    </button>
+                    <!-- Desktop: always visible header -->
+                    <h3 class="hidden lg:block text-brand-white/40 text-xs font-bold uppercase tracking-widest mb-8">About the Artist</h3>
+                    <!-- Cards container: hidden on mobile by default -->
+                    <div id="artists-cards" class="hidden lg:block">
+
+                    <!-- Dubbelle -->
+                    <div class="bg-brand-surface border border-brand-white/5 rounded-3xl p-8 relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-gradient-to-b from-brand-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="relative z-10">
+                            <h2 class="text-2xl font-display font-bold text-brand-white mb-2">DUBBELLE</h2>
+                            <p class="text-brand-white/50 text-sm mb-4">Brazil → Barcelona</p>
+                            <p class="text-brand-white/70 text-sm leading-relaxed mb-4">
+                                Brazilian duo. Isabela Angelo and T&#226;mara Viegas, friends first, now based in Barcelona. Their sets move from melodic afro house to the darker, introspective side of afro techno. They've played Sala Bikini, Bridge 48 and Red Session Community.
+                            </p>
+                            <div class="flex items-center gap-3">
+                                <a href="https://instagram.com/dubbellemusic" target="_blank" class="text-brand-white/30 hover:text-brand-gold transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    </div><!-- /artists-cards -->
+                </div>
+
+                <!-- Session Details & Equipment (Right) -->
+                <div class="lg:col-span-8">
+                    <!-- Session Story -->
+                    <div class="mb-16">
+                        <h3 class="text-brand-white/40 text-xs font-bold uppercase tracking-widest mb-6">The Session</h3>
+                        <div class="text-brand-white/70 text-lg leading-relaxed space-y-4">
+                            <p>One of the best vibes we've had. Everyone dancing, everyone connected. Pure energy in motion.</p>
+                        </div>
+                    </div>
+
+                    <!-- Equipment -->
+                    <div class="p-8 rounded-3xl bg-brand-surface/50 border border-brand-white/5">
+                        <h3 class="text-brand-white/40 text-xs font-bold uppercase tracking-widest mb-6">Equipment</h3>
+                        <div class="flex justify-center">
+                            <div class="text-center max-w-xs">
+                                <i class="fa-solid fa-sliders text-2xl text-brand-white/20 mb-3"></i>
+                                <p class="text-brand-white text-sm font-bold">Pioneer DDJ-RX3</p>
+                                <p class="text-brand-white/30 text-xs">Pioneer DJ · All-in-One Controller</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEXT SESSIONS -->
+        <section class="py-20 px-6 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-purple/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+            <div class="max-w-[1440px] mx-auto relative z-10">
+                <div class="flex items-end justify-between mb-12">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <span class="w-8 h-[1px] bg-brand-gold"></span>
+                            <span class="text-brand-gold text-xs font-bold tracking-[0.2em] uppercase">Continue Watching</span>
+                        </div>
+                        <h2 class="text-4xl md:text-5xl font-display font-bold text-brand-white">MORE SESSIONS</h2>
+                    </div>
+                    <a href="sessions.html" class="hidden md:flex text-brand-white/60 hover:text-brand-white items-center gap-2 text-sm uppercase tracking-widest transition-colors">
+                        View All <i class="fa-solid fa-arrow-right -rotate-45"></i>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Henry Carlin -->
+                    <a href="session-henry-carlin.html" class="group block">
+                        <div class="relative aspect-video rounded-2xl overflow-hidden mb-4 border border-brand-white/5">
+                            <div class="absolute inset-0 bg-brand-black/20 group-hover:bg-transparent transition-all z-10"></div>
+                            <img src="https://img.youtube.com/vi/892ogtvgm5M/maxresdefault.jpg" alt="Henry Carlin Session" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                                <div class="w-14 h-14 rounded-full bg-brand-white/90 backdrop-blur text-brand-black flex items-center justify-center shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                                    <i class="fa-solid fa-play ml-1"></i>
+                                </div>
+                            </div>
+                            <div class="absolute top-4 left-4 z-20">
+                                <span class="px-2 py-1 bg-brand-black/60 backdrop-blur-md rounded text-[10px] font-medium uppercase tracking-wider text-brand-white border border-brand-white/10">#004</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex items-center space-x-2 text-brand-gold text-[10px] font-bold uppercase tracking-widest mb-1">
+                                <span>Indie Dance</span>
+                            </div>
+                            <h3 class="text-xl font-display font-bold text-brand-white group-hover:text-brand-gold transition-colors">HENRY CARLIN</h3>
+                        </div>
+                    </a>
+
+                    <!-- Le Bulla -->
+                    <a href="session-le-bulla.html" class="group block">
+                        <div class="relative aspect-video rounded-2xl overflow-hidden mb-4 border border-brand-white/5">
+                            <div class="absolute inset-0 bg-brand-black/20 group-hover:bg-transparent transition-all z-10"></div>
+                            <img src="https://img.youtube.com/vi/sFto1Cpjzm8/maxresdefault.jpg" alt="Le Bulla Session" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                                <div class="w-14 h-14 rounded-full bg-brand-white/90 backdrop-blur text-brand-black flex items-center justify-center shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                                    <i class="fa-solid fa-play ml-1"></i>
+                                </div>
+                            </div>
+                            <div class="absolute top-4 left-4 z-20">
+                                <span class="px-2 py-1 bg-brand-black/60 backdrop-blur-md rounded text-[10px] font-medium uppercase tracking-wider text-brand-white border border-brand-white/10">#006</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex items-center space-x-2 text-brand-teal text-[10px] font-bold uppercase tracking-widest mb-1">
+                                <span>House</span>
+                            </div>
+                            <h3 class="text-xl font-display font-bold text-brand-white group-hover:text-brand-teal transition-colors">LE BULLA</h3>
+                        </div>
+                    </a>
+
+                    <!-- Andres Divitto -->
+                    <a href="session-andres-divitto.html" class="group block">
+                        <div class="relative aspect-video rounded-2xl overflow-hidden mb-4 border border-brand-white/5">
+                            <div class="absolute inset-0 bg-brand-black/20 group-hover:bg-transparent transition-all z-10"></div>
+                            <img src="https://img.youtube.com/vi/PxE58mDfmA4/maxresdefault.jpg" alt="Andres Divitto Session" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                                <div class="w-14 h-14 rounded-full bg-brand-white/90 backdrop-blur text-brand-black flex items-center justify-center shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                                    <i class="fa-solid fa-play ml-1"></i>
+                                </div>
+                            </div>
+                            <div class="absolute top-4 left-4 z-20">
+                                <span class="px-2 py-1 bg-brand-black/60 backdrop-blur-md rounded text-[10px] font-medium uppercase tracking-wider text-brand-white border border-brand-white/10">#007</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex items-center space-x-2 text-brand-purple text-[10px] font-bold uppercase tracking-widest mb-1">
+                                <span>House</span>
+                                <span class="text-brand-white/20">&bull;</span>
+                                <span>Deep House</span>
+                            </div>
+                            <h3 class="text-xl font-display font-bold text-brand-white group-hover:text-brand-purple transition-colors">ANDR&#201;S DIVITTO</h3>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Mobile: View All link -->
+                <div class="mt-8 text-center md:hidden">
+                    <a href="sessions.html" class="text-brand-white/60 hover:text-brand-white text-sm uppercase tracking-widest transition-colors">
+                        View All Sessions <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA BANNER -->
+        <section class="py-20 px-6">
+            <div class="max-w-[1440px] mx-auto">
+                <div class="rounded-3xl bg-gradient-to-r from-brand-surface to-brand-surfaceHighlight border border-brand-white/5 p-12 md:p-20 relative overflow-hidden text-center">
+                    <div class="absolute inset-0 bg-vinyl-shine opacity-10 animate-spin-slow pointer-events-none"></div>
+
+                    <div class="relative z-10 max-w-2xl mx-auto">
+                        <h2 class="text-3xl md:text-5xl font-display font-bold text-brand-white mb-6">WANT TO PLAY WITH US?</h2>
+                        <p class="text-brand-white/60 text-lg mb-10">
+                            We build sessions together. If you have a sound you want to share, reach out.
+                        </p>
+                        <a href="https://instagram.com/airfryer_collective" target="_blank" class="inline-flex items-center px-8 py-4 bg-brand-white text-brand-black font-bold rounded-full hover:bg-brand-gold transition-all shadow-lg hover:shadow-glow transform hover:-translate-y-1">
+                            Send Your Mix <i class="fa-brands fa-instagram ml-3"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-dark py-12 px-6 border-t border-brand-white/5">
+        <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3 mb-6 md:mb-0">
+                <div class="w-8 h-8 overflow-hidden flex-shrink-0" style="margin-top: -4px;">
+                    <img src="mascot-white.png" alt="Airfryer Collective" class="w-full object-cover object-top" style="height: 135%; margin-top: -5%;">
+                </div>
+                <span class="font-display font-bold text-lg tracking-tight">AIRFRYER <span class="text-brand-white/70">COLLECTIVE</span></span>
+            </div>
+
+            <div class="flex items-center space-x-8 mb-6 md:mb-0">
+                <a href="https://instagram.com/airfryer_collective" target="_blank" class="text-brand-white/50 hover:text-brand-gold transition-colors text-sm">Instagram</a>
+                <a href="https://www.youtube.com/@AirfryerCollective" target="_blank" class="text-brand-white/50 hover:text-brand-gold transition-colors text-sm">YouTube</a>
+                <a href="mailto:airfryercollective@gmail.com" class="text-brand-white/50 hover:text-brand-gold transition-colors text-sm">Email</a>
+            </div>
+
+            <div class="text-brand-white/30 text-xs text-center md:text-right">
+                <p>&copy; 2026 Airfryer Collective. Barcelona.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Video Player Logic
+        const videoId = 'pLGyy7kkAHk';
+        let videoStarted = false;
+
+        function playVideo(startSeconds) {
+            startSeconds = startSeconds || 0;
+
+            // YouTube embeds don't work from file:// — open directly instead
+            if (window.location.protocol === 'file:') {
+                const timeParam = startSeconds > 0 ? '&t=' + startSeconds : '';
+                window.open('https://www.youtube.com/watch?v=' + videoId + timeParam, '_blank');
+                return;
+            }
+
+            const iframe = document.getElementById('videoPlayer');
+            const playTrigger = document.getElementById('playTrigger');
+            const thumbnail = document.getElementById('video-thumbnail');
+
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&start=${startSeconds}`;
+            iframe.classList.remove('hidden');
+            playTrigger.style.opacity = '0';
+            playTrigger.style.pointerEvents = 'none';
+            thumbnail.style.opacity = '0';
+            videoStarted = true;
+        }
+
+        document.getElementById('playTrigger').addEventListener('click', function() { playVideo(0); });
+
+        // Mobile: Toggle Artists Section
+        function toggleArtists() {
+            const cards = document.getElementById('artists-cards');
+            const chevron = document.getElementById('artists-chevron');
+            cards.classList.toggle('hidden');
+            chevron.style.transform = cards.classList.contains('hidden') ? '' : 'rotate(180deg)';
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-brand-black/80', 'backdrop-blur-md', 'shadow-lg');
+                navbar.classList.remove('py-6');
+                navbar.classList.add('py-4');
+            } else {
+                navbar.classList.remove('bg-brand-black/80', 'bg-brand-black', 'backdrop-blur-md', 'shadow-lg');
+                navbar.classList.remove('py-4');
+                navbar.classList.add('py-6');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            const navbar = document.getElementById('navbar');
+            if (!mobileMenu.classList.contains('hidden')) {
+                navbar.classList.add('bg-brand-black', 'h-screen', 'overflow-hidden');
+                document.body.classList.add('overflow-hidden');
+            } else {
+                navbar.classList.remove('bg-brand-black', 'h-screen', 'overflow-hidden');
+                document.body.classList.remove('overflow-hidden');
+            }
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
+        });
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                const navbar = document.getElementById('navbar');
+                navbar.classList.remove('bg-brand-black', 'h-screen', 'overflow-hidden');
+                document.body.classList.remove('overflow-hidden');
+                mobileMenuBtn.querySelector('i').classList.remove('fa-xmark');
+                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // Intersection Observer for Scroll Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('opacity-0');
+                    entry.target.classList.add('animate-slide-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('[style*="animation-delay"]').forEach(el => {
+            el.classList.remove('animate-slide-up');
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

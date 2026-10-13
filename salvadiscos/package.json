@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "pagedjs": "^0.4.3",
+    "puppeteer": "^25.1.0"
+  }
+}

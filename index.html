@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airfryer Collective | Barcelona Living Room Sessions</title>
+    <meta name="description" content="Intimate living room sessions. Music Collective born in Barcelona, sharing our love for music">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            black: '#1A1714',
+                            white: '#EDE6DC',
+                            gold: '#C4956B',
+                            teal: '#7BA8A0',
+                            purple: '#9B7EB8',
+                            dark: '#12100E',
+                            surface: '#24201C',
+                            surfaceHighlight: '#2E2A25'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['DM Sans', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'grain': "url('https://cdnjs.cloudflare.com/ajax/libs/svg-patterns/1.0.0/dist/noise.svg')",
+                        'holographic': 'linear-gradient(135deg, #C4956B 0%, #9B7EB8 50%, #7BA8A0 100%)',
+                        'vinyl-shine': 'conic-gradient(from 180deg at 50% 50%, rgba(255,255,255,0.1) 0deg, rgba(255,255,255,0) 60deg, rgba(255,255,255,0.1) 120deg, rgba(255,255,255,0) 180deg, rgba(255,255,255,0.1) 240deg, rgba(255,255,255,0) 300deg, rgba(255,255,255,0.1) 360deg)',
+                    },
+                    animation: {
+                        'spin-slow': 'spin 8s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulse-glow 4s ease-in-out infinite',
+                        'fade-out': 'fadeOut 1s ease-in-out forwards',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                        'reveal': 'reveal 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: 0.6, filter: 'brightness(1)' },
+                            '50%': { opacity: 1, filter: 'brightness(1.2)' },
+                        },
+                        fadeOut: {
+                            '0%': { opacity: 1, visibility: 'visible' },
+                            '100%': { opacity: 0, visibility: 'hidden' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: 0 },
+                            '100%': { transform: 'translateY(0)', opacity: 1 },
+                        },
+                        reveal: {
+                            '0%': { clipPath: 'inset(100% 0 0 0)' },
+                            '100%': { clipPath: 'inset(0 0 0 0)' },
+                        }
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(196, 149, 107, 0.3)',
+                        'card': '0 10px 30px -10px rgba(0, 0, 0, 0.5)',
+                        'holo': '0 0 30px rgba(155, 126, 184, 0.2)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        body {
+            background-color: #1A1714;
+            color: #EDE6DC;
+            font-family: 'DM Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.07;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        .holographic-text {
+            background: linear-gradient(135deg, #C4956B 20%, #9B7EB8 50%, #7BA8A0 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 200%;
+            animation: gradient-shift 5s ease infinite;
+        }
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes counter-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+        }
+        .vinyl-grooves {
+            background: repeating-radial-gradient(
+                #12100E,
+                #12100E 2px,
+                #24201C 3px,
+                #24201C 4px
+            );
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-panel {
+            background: rgba(36, 32, 28, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(237, 230, 220, 0.05);
+        }
+        .glass-card {
+            background: rgba(36, 32, 28, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(237, 230, 220, 0.08);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: rgba(196, 149, 107, 0.3);
+            background: rgba(36, 32, 28, 0.8);
+            transform: translateY(-5px);
+        }
+
+        /* Preloader */
+        #preloader {
+            transition: opacity 1.2s cubic-bezier(0.77, 0, 0.175, 1), transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        #preloader.loaded {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(1.05);
+        }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+        /* Crossfader */
+        .crossfader-track {
+            position: relative;
+            width: 280px;
+            height: 8px;
+            background: rgba(36, 32, 28, 0.8);
+            border: 1px solid rgba(237, 230, 220, 0.1);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .crossfader-knob {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 24px;
+            background: linear-gradient(180deg, #C4956B 0%, #9B7EB8 50%, #7BA8A0 100%);
+            border-radius: 4px;
+            cursor: grab;
+            transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 0 12px rgba(196, 149, 107, 0.3);
+        }
+        .crossfader-knob:active { cursor: grabbing; }
+        .crossfader-knob::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 2px;
+            background: rgba(0,0,0,0.4);
+            border-radius: 1px;
+        }
+        .crossfader-knob::after {
+            content: '';
+            position: absolute;
+            top: calc(50% + 4px);
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 2px;
+            background: rgba(0,0,0,0.4);
+            border-radius: 1px;
+        }
+        .crossfader-label {
+            transition: color 0.3s ease, opacity 0.3s ease;
+            cursor: pointer;
+        }
+        .crossfader-label.active {
+            color: #C4956B;
+        }
+        .crossfader-content {
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .crossfader-content.hidden-content {
+            opacity: 0;
+            position: absolute;
+            pointer-events: none;
+            transform: translateY(10px);
+        }
+        .crossfader-content.visible-content {
+            opacity: 1;
+            position: relative;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        /* Mobile menu */
+        #mobile-menu {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        #mobile-menu.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-10px);
+        }
+        #mobile-menu:not(.hidden) {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        /* Vinyl responsive: cap size on mobile */
+        .vinyl-wrapper {
+            max-width: min(100%, calc(100vh - 8rem));
+        }
+        @media (max-width: 1023px) {
+            .vinyl-wrapper {
+                max-width: 280px;
+            }
+        }
+
+        /* Contact hover */
+        .contact-link-hover:hover .icon-container {
+            background-color: #C4956B;
+            color: #1A1714;
+            transform: scale(1.1);
+        }
+        .contact-link-hover:hover .arrow-icon {
+            transform: translateX(4px) translateY(-4px);
+            opacity: 1;
+            color: #C4956B;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-gold selection:text-brand-black">
+
+    <!-- Global Grain Overlay -->
+    <div class="grain-overlay"></div>
+
+    <!-- ==================== SECTION 1: PRELOADER (Video) ==================== -->
+    <div id="preloader" class="fixed inset-0 z-[100] bg-brand-black flex items-center justify-center overflow-hidden cursor-pointer">
+        <video id="preloader-video" autoplay loop muted playsinline class="w-full h-full object-contain" style="mix-blend-mode: lighten;">
+            <source src="airfryer_intro_logo_web_hq.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-6 transition-all duration-300" id="navbar">
+        <div class="max-w-[1440px] mx-auto flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 overflow-hidden flex-shrink-0 group-hover:scale-110 transition-transform duration-300" style="margin-top: -4px;">
+                    <img src="mascot-white.png" alt="Airfryer Collective" class="w-full object-cover object-top" style="height: 135%; margin-top: -5%;">
+                </div>
+                <span class="font-display font-bold text-xl tracking-tight text-brand-white">AIRFRYER <span class="text-brand-white/70">COLLECTIVE</span></span>
+            </a>
+
+            <div class="hidden lg:flex items-center space-x-1">
+                <div class="glass-panel px-2 py-1.5 rounded-full flex items-center space-x-1">
+                    <a href="#hero" class="nav-link px-4 py-2 rounded-full text-xs font-bold text-brand-white/70 hover:text-brand-white hover:bg-brand-white/5 transition-all whitespace-nowrap" data-section="hero">HOME</a>
+                    <a href="#sessions" class="nav-link px-4 py-2 rounded-full text-xs font-bold text-brand-white/70 hover:text-brand-white hover:bg-brand-white/5 transition-all whitespace-nowrap" data-section="sessions">SESSIONS</a>
+                    <a href="#about" class="nav-link px-4 py-2 rounded-full text-xs font-bold text-brand-white/70 hover:text-brand-white hover:bg-brand-white/5 transition-all whitespace-nowrap" data-section="about">ABOUT</a>
+                    <a href="#artists" class="nav-link px-4 py-2 rounded-full text-xs font-bold text-brand-white/70 hover:text-brand-white hover:bg-brand-white/5 transition-all whitespace-nowrap" data-section="artists">THE COMMUNITY</a>
+                    <a href="#events" class="nav-link px-4 py-2 rounded-full text-xs font-bold text-brand-white/70 hover:text-brand-white hover:bg-brand-white/5 transition-all whitespace-nowrap" data-section="events">EVENTS</a>
+                    <a href="/partnerships" class="nav-link px-4 py-2 rounded-full text-xs font-bold text-brand-white/70 hover:text-brand-white hover:bg-brand-white/5 transition-all whitespace-nowrap">PARTNERSHIPS</a>
+                </div>
+                <a href="#contact" class="ml-4 px-6 py-3.5 rounded-full bg-brand-white text-brand-black text-xs font-bold hover:bg-brand-gold transition-all duration-300 shadow-lg hover:shadow-glow transform hover:-translate-y-0.5">
+                    CONTACT
+                </a>
+            </div>
+
+            <button id="mobile-menu-btn" class="lg:hidden text-brand-white">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden lg:hidden mt-4 pb-4 border-t border-brand-white/10 pt-4">
+            <div class="flex flex-col space-y-4">
+                <a href="#hero" class="text-sm font-bold text-brand-white/70 hover:text-brand-white transition-colors">HOME</a>
+                <a href="#sessions" class="text-sm font-bold text-brand-white/70 hover:text-brand-white transition-colors">SESSIONS</a>
+                <a href="#about" class="text-sm font-bold text-brand-white/70 hover:text-brand-white transition-colors">ABOUT</a>
+                <a href="#artists" class="text-sm font-bold text-brand-white/70 hover:text-brand-white transition-colors">THE COMMUNITY</a>
+                <a href="#events" class="text-sm font-bold text-brand-white/70 hover:text-brand-white transition-colors">EVENTS</a>
+                <a href="/partnerships" class="text-sm font-bold text-brand-white/70 hover:text-brand-white transition-colors">PARTNERSHIPS</a>
+                <a href="#contact" class="text-sm font-bold text-brand-white hover:text-brand-gold transition-colors">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="relative z-0">
+
+        <!-- ==================== SECTION 2: HERO ==================== -->
+        <section id="hero" class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
+            <!-- Background Video -->
+            <div class="absolute inset-0 z-[-1] opacity-40">
+                <video autoplay loop muted playsinline class="w-full h-full object-cover grayscale mix-blend-overlay">
+                    <source src="hero-video.mp4" type="video/mp4">
+                </video>
+                <div class="absolute inset-0 bg-gradient-to-b from-brand-black via-transparent to-brand-black"></div>
+            </div>
+
+            <div class="max-w-6xl mx-auto text-center relative z-10">
+                <!-- Next Event Badge — hidden until next event -->
+                <!--
+                <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-brand-white/10 bg-brand-white/5 backdrop-blur-sm mb-6 animate-slide-up" style="animation-delay: 0.3s;">
+                    <span class="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse"></span>
+                    <span class="text-xs font-medium tracking-wide uppercase text-brand-white/80">Next Event: TBD</span>
+                </div>
+                -->
+
+                <!-- Headline -->
+                <h1 class="text-5xl md:text-7xl lg:text-9xl font-display font-bold leading-[0.9] tracking-tighter mb-6 opacity-0 animate-slide-up" style="animation-delay: 0.4s; animation-fill-mode: forwards;">
+                    INTIMATE<br>
+                    <span class="holographic-text">LIVING ROOM</span><br>
+                    SESSIONS.
+                </h1>
+
+                <!-- Subtext -->
+                <p class="max-w-2xl mx-auto text-lg md:text-xl text-brand-white/70 leading-relaxed mb-8 opacity-0 animate-slide-up text-center" style="animation-delay: 0.6s; animation-fill-mode: forwards;">
+                    Music Collective born in Barcelona, sharing our love for music
+                </p>
+
+                <!-- CTAs + Scroll Indicator -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 opacity-0 animate-slide-up" style="animation-delay: 0.8s; animation-fill-mode: forwards;">
+                    <a href="#sessions" class="group relative px-8 py-4 bg-brand-white text-brand-black font-bold rounded-full overflow-hidden">
+                        <span class="relative z-10 group-hover:text-brand-white transition-colors duration-300">EXPLORE SESSIONS</span>
+                        <div class="absolute inset-0 bg-brand-gold transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out"></div>
+                    </a>
+                    <div class="hidden sm:flex flex-col items-center">
+                        <span class="text-[10px] uppercase tracking-[0.2em] text-brand-white/40 mb-2">Scroll</span>
+                        <div class="w-[1px] h-12 bg-gradient-to-b from-brand-white/40 to-transparent"></div>
+                    </div>
+                    <a href="https://www.instagram.com/reel/Daf6m1UNcFx/" target="_blank" rel="noopener" class="flex items-center space-x-3 text-brand-white hover:text-brand-gold transition-colors group">
+                        <div class="w-12 h-12 rounded-full border border-brand-white/30 flex items-center justify-center group-hover:border-brand-gold transition-colors">
+                            <i class="fa-solid fa-play text-sm ml-1"></i>
+                        </div>
+                        <span class="font-medium text-sm tracking-wide">WATCH SHOWREEL</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 3: PROOF STRIP (Landing glass panel style) ==================== -->
+        <section class="border-y border-brand-white/5 glass-panel">
+            <div class="max-w-[1440px] mx-auto px-6 py-6 md:py-8">
+                <div class="flex justify-center items-center gap-4 md:gap-12">
+                    <div class="flex flex-col items-center flex-1">
+                        <span class="text-2xl md:text-4xl font-display font-bold text-brand-gold">643</span>
+                        <span class="text-[10px] md:text-xs uppercase tracking-widest text-brand-white/60 mt-1 font-medium">People</span>
+                    </div>
+
+                    <div class="hidden md:block w-px h-10 bg-brand-white/10"></div>
+
+                    <div class="flex flex-col items-center flex-1">
+                        <span class="text-2xl md:text-4xl font-display font-bold text-brand-teal">28</span>
+                        <span class="text-[10px] md:text-xs uppercase tracking-widest text-brand-white/60 mt-1 font-medium">Artists</span>
+                    </div>
+
+                    <div class="hidden md:block w-px h-10 bg-brand-white/10"></div>
+
+                    <div class="flex flex-col items-center flex-1">
+                        <span class="text-2xl md:text-4xl font-display font-bold text-brand-purple">25</span>
+                        <span class="text-[10px] md:text-xs uppercase tracking-widest text-brand-white/60 mt-1 font-medium">Sessions</span>
+                    </div>
+
+                    <div class="hidden md:block w-px h-10 bg-brand-white/10"></div>
+
+                    <div class="flex flex-col items-center flex-1">
+                        <span class="text-2xl md:text-4xl font-display font-bold text-brand-white">8</span>
+                        <span class="text-[10px] md:text-xs uppercase tracking-widest text-brand-white/60 mt-1 font-medium">Countries</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 4: SESSIONS ==================== -->
+        <section id="sessions" class="py-32 px-6">
+            <div class="max-w-[1440px] mx-auto">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                    <div>
+                        <span class="text-brand-gold text-sm font-bold tracking-widest uppercase mb-2 block">The Archive</span>
+                        <h2 class="text-4xl md:text-6xl font-display font-bold">LATEST SESSIONS</h2>
+                    </div>
+                    <a href="sessions.html" class="hidden md:inline-flex items-center text-brand-white/60 hover:text-brand-white transition-colors mt-4 md:mt-0">
+                        View all archive <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- Session: Andrés Divitto (Leavin' the Room @ Salva Discos) -->
+                    <a href="https://youtu.be/oPAwYG0t9I8" target="_blank" rel="noopener" class="group cursor-pointer block">
+                        <div class="relative aspect-video overflow-hidden rounded-lg mb-6">
+                            <div class="absolute inset-0 bg-brand-black/20 z-10 group-hover:bg-transparent transition-colors duration-500"></div>
+                            <img src="thumbs/salvadiscos/andres-divitto.jpg" alt="Andrés Divitto at Salva Discos" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+                            <div class="absolute top-4 left-4 z-20">
+                                <span class="px-2 py-1 bg-brand-teal/90 backdrop-blur-md rounded text-[10px] font-bold uppercase tracking-wider text-brand-black shadow-lg">Salva Discos</span>
+                            </div>
+                            <div class="absolute bottom-4 right-4 z-20 w-10 h-10 bg-brand-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                <i class="fa-solid fa-play text-brand-black text-xs ml-0.5"></i>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-2 text-brand-gold text-xs font-bold uppercase tracking-widest">
+                                <span>Deep House</span>
+                            </div>
+                            <h3 class="text-2xl font-display font-bold group-hover:text-brand-teal transition-colors">ANDRÉS DIVITTO</h3>
+                            <p class="text-brand-white/50 text-sm line-clamp-2">Leavin&rsquo; the Room is back, this time at Salva Discos. When it was time to pick who would open the night, there was no list. It was him.</p>
+                        </div>
+                    </a>
+
+                    <!-- Session: Seed Selector (#016) -->
+                    <a href="https://youtu.be/lmSqYLC9XeM" target="_blank" rel="noopener" class="group cursor-pointer block">
+                        <div class="relative aspect-video overflow-hidden rounded-lg mb-6">
+                            <div class="absolute inset-0 bg-brand-black/20 z-10 group-hover:bg-transparent transition-colors duration-500"></div>
+                            <img src="thumbs/living-room/seed-selector.jpg" alt="Seed Selector Session" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+                            <div class="absolute bottom-4 right-4 z-20 w-10 h-10 bg-brand-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                <i class="fa-solid fa-play text-brand-black text-xs ml-0.5"></i>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-2 text-brand-gold text-xs font-bold uppercase tracking-widest">
+                                <span>House</span>
+                            </div>
+                            <h3 class="text-2xl font-display font-bold group-hover:text-brand-gold transition-colors">SEED SELECTOR</h3>
+                            <p class="text-brand-white/50 text-sm line-clamp-2">Too hot for the living room, so we moved the whole session to the dining room. House music without borders, from São Paulo.</p>
+                        </div>
+                    </a>
+
+                    <!-- Session: Soulfie (#015) -->
+                    <a href="https://youtu.be/iThWGMtdAk4" target="_blank" rel="noopener" class="group cursor-pointer block">
+                        <div class="relative aspect-video overflow-hidden rounded-lg mb-6">
+                            <div class="absolute inset-0 bg-brand-black/20 z-10 group-hover:bg-transparent transition-colors duration-500"></div>
+                            <img src="thumbs/living-room/soulfie.jpg" alt="Soulfie Session" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+                            <div class="absolute bottom-4 right-4 z-20 w-10 h-10 bg-brand-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                <i class="fa-solid fa-play text-brand-black text-xs ml-0.5"></i>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-2 text-brand-gold text-xs font-bold uppercase tracking-widest">
+                                <span>House</span>
+                            </div>
+                            <h3 class="text-2xl font-display font-bold group-hover:text-brand-purple transition-colors">SOULFIE</h3>
+                            <p class="text-brand-white/50 text-sm line-clamp-2">Soul and disco at the root, house music in all its branches. From Santa Catarina, based in São Paulo.</p>
+                        </div>
+                    </a>
+
+                    <!-- Session: KMNI (#014) -->
+                    <a href="https://youtu.be/ezyciDVG0lw" target="_blank" rel="noopener" class="group cursor-pointer block">
+                        <div class="relative aspect-video overflow-hidden rounded-lg mb-6">
+                            <div class="absolute inset-0 bg-brand-black/20 z-10 group-hover:bg-transparent transition-colors duration-500"></div>
+                            <img src="thumbs/living-room/kmni.jpg" alt="KMNI Session" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+                            <div class="absolute bottom-4 right-4 z-20 w-10 h-10 bg-brand-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                <i class="fa-solid fa-play text-brand-black text-xs ml-0.5"></i>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-2 text-brand-gold text-xs font-bold uppercase tracking-widest">
+                                <span>Afro House</span>
+                            </div>
+                            <h3 class="text-2xl font-display font-bold group-hover:text-brand-teal transition-colors">KMNI</h3>
+                            <p class="text-brand-white/50 text-sm line-clamp-2">West African rhythm meets modern electronic music. Cameroonian-born, Los Angeles-based.</p>
+                        </div>
+                    </a>
+
+                    <!-- Session: Animaâ B2B Ganem (#013) -->
+                    <a href="https://youtu.be/17sTKp8EePY" target="_blank" rel="noopener" class="group cursor-pointer block">
+                        <div class="relative aspect-video overflow-hidden rounded-lg mb-6">
+                            <div class="absolute inset-0 bg-brand-black/20 z-10 group-hover:bg-transparent transition-colors duration-500"></div>
+                            <img src="thumbs/living-room/animaa-b2b-ganem.jpg" alt="Animaâ B2B Ganem Session" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+                            <div class="absolute bottom-4 right-4 z-20 w-10 h-10 bg-brand-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                <i class="fa-solid fa-play text-brand-black text-xs ml-0.5"></i>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-2 text-brand-gold text-xs font-bold uppercase tracking-widest">
+                                <span>Indie Dance</span>
+                                <span class="w-1 h-1 rounded-full bg-brand-white/30"></span>
+                                <span>Deep House</span>
+                            </div>
+                            <h3 class="text-2xl font-display font-bold group-hover:text-brand-purple transition-colors">ANIMAÂ B2B GANEM</h3>
+                            <p class="text-brand-white/50 text-sm line-clamp-2">From deep, underground grooves into full indie dance energy. The living room sessions, back in 2026.</p>
+                        </div>
+                    </a>
+
+                    <!-- Session: Mats + Ma House B3B (Leavin' the Room @ Bridge 48) -->
+                    <a href="https://youtu.be/ro6n1MVRhWU" target="_blank" rel="noopener" class="group cursor-pointer block">
+                        <div class="relative aspect-video overflow-hidden rounded-lg mb-6">
+                            <div class="absolute inset-0 bg-brand-black/20 z-10 group-hover:bg-transparent transition-colors duration-500"></div>
+                            <img src="thumbs/bridge48/mats-ma-house.jpg" alt="Mats + Ma House B3B at Bridge 48" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+                            <div class="absolute top-4 left-4 z-20">
+                                <span class="px-2 py-1 bg-brand-gold/90 backdrop-blur-md rounded text-[10px] font-bold uppercase tracking-wider text-brand-black shadow-lg">Bridge 48</span>
+                            </div>
+                            <div class="absolute bottom-4 right-4 z-20 w-10 h-10 bg-brand-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                <i class="fa-solid fa-play text-brand-black text-xs ml-0.5"></i>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-2 text-brand-gold text-xs font-bold uppercase tracking-widest">
+                                <span>House</span>
+                            </div>
+                            <h3 class="text-2xl font-display font-bold group-hover:text-brand-gold transition-colors">MATS + MA HOUSE</h3>
+                            <p class="text-brand-white/50 text-sm line-clamp-2">Closed the Lab Room, then ended the night with a B3B alongside Charlins and DJ Tortuga.</p>
+                        </div>
+                    </a>
+
+                </div>
+
+                <div class="mt-12 text-center">
+                    <a href="sessions.html" class="inline-flex items-center text-brand-white/60 hover:text-brand-white transition-colors border-b border-brand-white/20 pb-1">
+                        View all archive <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 5: WHO WE ARE + CROSSFADER ==================== -->
+        <section id="about" class="min-h-[calc(100vh-5rem)] flex items-center py-12 bg-brand-dark border-t border-brand-white/5">
+            <div class="max-w-[1440px] mx-auto px-6 w-full">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <!-- Big Vinyl Spinner (dynamic: adapts to viewport height) -->
+                    <div class="relative w-full mx-auto vinyl-wrapper">
+                        <div class="aspect-square rounded-full border border-brand-white/10 p-8 animate-spin-slow">
+                            <div class="w-full h-full rounded-full bg-brand-surface flex items-center justify-center relative overflow-hidden">
+                                <div class="absolute inset-0 bg-vinyl-shine opacity-20"></div>
+                                <div class="text-center p-8 animate-[counter-spin_8s_linear_infinite]">
+                                    <div class="font-display font-bold text-2xl text-brand-white mb-2">EST. 2025</div>
+                                    <p class="text-xs text-brand-white/50 uppercase tracking-widest">Barcelona</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-holographic rounded-full blur-[60px] opacity-40"></div>
+                    </div>
+
+                    <!-- Crossfader + Text + Boxes -->
+                    <div class="space-y-8">
+                        <!-- Crossfader Control -->
+                        <div class="flex flex-col items-center lg:items-start">
+                            <div class="relative mb-3 overflow-visible" style="width: 280px; height: 1.25rem;">
+                                <span class="crossfader-label absolute text-xs font-bold uppercase tracking-widest text-brand-white/40 whitespace-nowrap" style="left: 0%; transform: translateX(-50%);" data-position="0" id="label-venues">For Venues</span>
+                                <span class="crossfader-label active absolute text-xs font-bold uppercase tracking-widest text-brand-gold whitespace-nowrap" style="left: 50%; transform: translateX(-50%);" data-position="1" id="label-music">Music Lovers</span>
+                                <span class="crossfader-label absolute text-xs font-bold uppercase tracking-widest text-brand-white/40 whitespace-nowrap" style="left: 100%; transform: translateX(-50%);" data-position="2" id="label-djs">For DJs</span>
+                            </div>
+                            <div class="crossfader-track" id="crossfader-track">
+                                <div class="crossfader-knob" id="crossfader-knob" style="left: 50%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Content panels (stacked, toggled by crossfader) -->
+                        <div class="relative">
+                            <!-- Panel 0: Music Lovers (default) -->
+                            <div class="crossfader-content visible-content" id="panel-music">
+                                <div class="space-y-8">
+                                    <div>
+                                        <h2 class="text-4xl font-display font-bold mb-4">WHO WE ARE</h2>
+                                        <p class="text-lg text-brand-white/70">We're music lovers. That's it. We all come for the same reason.</p>
+                                    </div>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                        <div class="border-l border-brand-gold pl-6">
+                                            <h4 class="font-bold text-xl mb-2 text-brand-gold uppercase">THE LIVING ROOM</h4>
+                                            <p class="text-sm text-brand-white/60">Every session starts the same way: a living room, a sound system, and people who care about the music.</p>
+                                        </div>
+                                        <div class="border-l border-brand-teal pl-6">
+                                            <h4 class="font-bold text-xl mb-2 text-brand-teal uppercase">THE MUSIC</h4>
+                                            <p class="text-sm text-brand-white/60">DJs play what they actually listen to — no safe setlists, no expectations. Just the music they love.</p>
+                                        </div>
+                                        <div class="border-l border-brand-purple pl-6">
+                                            <h4 class="font-bold text-xl mb-2 text-brand-purple uppercase">THE PEOPLE</h4>
+                                            <p class="text-sm text-brand-white/60">Some of us play. Some of us dance. Some of us just close our eyes and feel it.</p>
+                                        </div>
+                                        <div class="border-l border-brand-white pl-6">
+                                            <h4 class="font-bold text-xl mb-2 text-brand-white uppercase">THE ARCHIVE</h4>
+                                            <p class="text-sm text-brand-white/60">We record everything. Not for content. So everyone who was there can remember what it felt like.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Panel 1: For Venues -->
+                            <div class="crossfader-content hidden-content" id="panel-venues">
+                                <div class="space-y-8">
+                                    <div>
+                                        <h2 class="text-4xl font-display font-bold mb-4">FOR VENUES</h2>
+                                        <p class="text-lg text-brand-white/70">We're not just another promoter. We're a content-first collective with a proven track record.</p>
+                                    </div>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                        <div class="border-l border-brand-gold pl-6">
+                                            <h4 class="font-bold text-xl mb-2 text-brand-gold uppercase">CONTENT PRODUCTION</h4>
+                                            <p class="text-sm text-brand-white/60">High-end video and audio recording for every set. We create assets that promote the venue and the artists.</p>
+                                        </div>
+                                        <div class="border-l border-brand-teal pl-6">
+                                            <h4 class="font-bold text-xl mb-2 text-brand-teal uppercase">ORGANIC GROWTH</h4>
+                                            <p class="text-sm text-brand-white/60">A loyal community that follows the music, not the hype. Real engagement, real people.</p>
+                                        </div>
+                                        <div class="border-l border-brand-purple pl-6">
+                                            <h4 class="font-bold text-xl mb-2 text-brand-purple uppercase">INTERNATIONAL REACH</h4>
+                                            <p class="text-sm text-brand-white/60">Artists from 5+ countries. We bring a global sound to local spaces.</p>
+                                        </div>
+                                        <div class="border-l border-brand-white pl-6">
+                                            <h4 class="font-bold text-xl mb-2 text-brand-white uppercase">PROFESSIONALISM</h4>
+                                            <p class="text-sm text-brand-white/60">Serious about the music, serious about the execution. We handle the details.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Panel 2: For DJs -->
+                            <div class="crossfader-content hidden-content" id="panel-djs">
+                                <div class="space-y-8">
+                                    <div>
+                                        <h2 class="text-4xl font-display font-bold mb-4">FOR DJs</h2>
+                                        <p class="text-lg text-brand-white/70">This is your lab. No safe setlists, no expectations. Just you and the music you love.</p>
+                                    </div>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                        <div class="border-l border-brand-gold pl-6">
+                                            <h4 class="font-bold text-xl mb-2 text-brand-gold uppercase">CREATIVE FREEDOM</h4>
+                                            <p class="text-sm text-brand-white/60">Play what you actually listen to. No time slots, no expectations. The room trusts you.</p>
+                                        </div>
+                                        <div class="border-l border-brand-teal pl-6">
+                                            <h4 class="font-bold text-xl mb-2 text-brand-teal uppercase">PROFESSIONAL RECORDING</h4>
+                                            <p class="text-sm text-brand-white/60">Every set captured in high-quality video and audio. Your session, professionally produced on YouTube.</p>
+                                        </div>
+                                        <div class="border-l border-brand-purple pl-6">
+                                            <h4 class="font-bold text-xl mb-2 text-brand-purple uppercase">REAL AUDIENCE</h4>
+                                            <p class="text-sm text-brand-white/60">People who care about the music, not their phones. A room full of listeners who get it.</p>
+                                        </div>
+                                        <div class="border-l border-brand-white pl-6">
+                                            <h4 class="font-bold text-xl mb-2 text-brand-white uppercase">JOIN 19+ ARTISTS</h4>
+                                            <p class="text-sm text-brand-white/60">Be part of a growing collective. 19 artists from 2 countries have already played with us.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 6: WHY WE DANCE (Splash original Artists layout) ==================== -->
+        <section id="artists" class="py-24 bg-brand-surface relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-purple/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+            <div class="max-w-[1440px] mx-auto px-6 relative z-10">
+                <div class="flex flex-col lg:flex-row gap-16">
+                    <!-- Sticky Text (Splash original structure) -->
+                    <div class="lg:w-1/3">
+                        <span class="text-brand-teal text-sm font-bold tracking-widest uppercase mb-4 block">The Community</span>
+                        <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">WHY WE<br>DANCE</h2>
+                        <p class="text-brand-white/70 text-lg leading-relaxed mb-8">
+                            We dance because music connects us beyond words. Because a beat can speak what words can't. Because in that shared moment, heartbeats and basslines become one.
+                        </p>
+                        <a href="#contact" class="inline-flex items-center px-6 py-3 border border-brand-white/20 rounded-full hover:bg-brand-white hover:text-brand-black transition-all duration-300 font-medium">
+                            Join the Community
+                        </a>
+                    </div>
+
+                    <!-- DJ Quote Cards (4, not 6) -->
+                    <div class="lg:w-2/3">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Le Bulla -->
+                            <div class="bg-brand-black p-6 rounded-xl border border-brand-white/5 hover:border-brand-gold/30 transition-colors group">
+                                <div class="flex items-center space-x-4 mb-4">
+                                    <div class="w-12 h-12 rounded-full bg-brand-surface flex items-center justify-center">
+                                        <span class="font-display font-bold text-brand-gold text-sm">LB</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-display font-bold text-lg">Le Bulla</h4>
+                                        <span class="text-xs text-brand-white/50 uppercase tracking-wider">House</span>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-brand-white/60 italic">"Airfryer is exactly what music means to me: being surrounded by people you love, in a safe place, with a good atmosphere and a deep bassline in the background."</p>
+                            </div>
+
+                            <!-- Marco -->
+                            <div class="bg-brand-black p-6 rounded-xl border border-brand-white/5 hover:border-brand-gold/30 transition-colors group">
+                                <div class="flex items-center space-x-4 mb-4">
+                                    <div class="w-12 h-12 rounded-full bg-brand-surface flex items-center justify-center">
+                                        <span class="font-display font-bold text-brand-teal text-sm">MB</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-display font-bold text-lg">Marco Boarelli</h4>
+                                        <span class="text-xs text-brand-white/50 uppercase tracking-wider">Progressive House</span>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-brand-white/60 italic">"A place to connect with music and with friends in community. From the moment I discovered the collective, I connected instantly."</p>
+                            </div>
+
+                            <!-- Valderrama -->
+                            <div class="bg-brand-black p-6 rounded-xl border border-brand-white/5 hover:border-brand-gold/30 transition-colors group">
+                                <div class="flex items-center space-x-4 mb-4">
+                                    <div class="w-12 h-12 rounded-full bg-brand-surface flex items-center justify-center">
+                                        <span class="font-display font-bold text-brand-purple text-sm">V</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-display font-bold text-lg">Valderrama</h4>
+                                        <span class="text-xs text-brand-white/50 uppercase tracking-wider">Indie Dance</span>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-brand-white/60 italic">"We felt we had a blank canvas. It was the perfect moment to express ourselves in the purest way."</p>
+                            </div>
+
+                            <!-- Nuup -->
+                            <div class="bg-brand-black p-6 rounded-xl border border-brand-white/5 hover:border-brand-gold/30 transition-colors group">
+                                <div class="flex items-center space-x-4 mb-4">
+                                    <div class="w-12 h-12 rounded-full bg-brand-surface flex items-center justify-center">
+                                        <span class="font-display font-bold text-brand-gold text-sm">N</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-display font-bold text-lg">Nuup</h4>
+                                        <span class="text-xs text-brand-white/50 uppercase tracking-wider">Melodic House</span>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-brand-white/60 italic">"This session gave me the freedom to play whatever I wanted. I could just share my proposal how I wanted."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Country Marquee (attached to this section) -->
+            <div class="mt-20 border-y border-brand-white/5 py-6 overflow-hidden bg-brand-black/50 backdrop-blur-sm">
+                <div class="flex whitespace-nowrap" style="animation: scroll 25s linear infinite;">
+                    <span class="text-4xl font-display font-bold text-brand-white/10 mx-8 uppercase">Argentina</span>
+                    <span class="text-4xl font-display font-bold text-brand-white/10 mx-8 uppercase">Brazil</span>
+                    <span class="text-4xl font-display font-bold text-brand-white/10 mx-8 uppercase">Canada</span>
+                    <span class="text-4xl font-display font-bold text-brand-white/10 mx-8 uppercase">Colombia</span>
+                    <span class="text-4xl font-display font-bold text-brand-white/10 mx-8 uppercase">Ireland</span>
+                    <span class="text-4xl font-display font-bold text-brand-white/10 mx-8 uppercase">Italy</span>
+                    <span class="text-4xl font-display font-bold text-brand-white/10 mx-8 uppercase">Portugal</span>
+                    <span class="text-4xl font-display font-bold text-brand-white/10 mx-8 uppercase">Spain</span>
+                    <span class="text-4xl font-display font-bold text-brand-white/10 mx-8 uppercase">Argentina</span>
+                    <span class="text-4xl font-display font-bold text-brand-white/10 mx-8 uppercase">Brazil</span>
+                    <span class="text-4xl font-display font-bold text-brand-white/10 mx-8 uppercase">Canada</span>
+                    <span class="text-4xl font-display font-bold text-brand-white/10 mx-8 uppercase">Colombia</span>
+                    <span class="text-4xl font-display font-bold text-brand-white/10 mx-8 uppercase">Ireland</span>
+                    <span class="text-4xl font-display font-bold text-brand-white/10 mx-8 uppercase">Italy</span>
+                    <span class="text-4xl font-display font-bold text-brand-white/10 mx-8 uppercase">Portugal</span>
+                    <span class="text-4xl font-display font-bold text-brand-white/10 mx-8 uppercase">Spain</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 7: LEAVIN’ THE ROOM @ BRIDGE 48 ==================== -->
+        <section id="events" class="min-h-[calc(100vh-5rem)] flex items-center py-12 px-6">
+            <div class="w-full">
+            <div class="max-w-4xl mx-auto text-center mb-16">
+                <div class="text-xs md:text-sm font-bold uppercase tracking-[0.3em] text-brand-white/50 mb-4">Airfryer Collective</div>
+                <h2 class="text-4xl md:text-6xl font-display font-bold mb-6">LEAVIN&rsquo; THE ROOM</h2>
+                <p class="text-xl text-brand-white/70">
+                    From the living room to Bridge 48.
+                </p>
+            </div>
+
+            <div class="max-w-5xl mx-auto">
+                <div class="relative bg-brand-surface rounded-2xl overflow-hidden border border-brand-white/10 shadow-2xl">
+                    <div class="absolute inset-0 bg-gradient-to-r from-brand-gold/10 to-brand-purple/10 pointer-events-none"></div>
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-2/5 relative h-80 md:h-auto overflow-hidden">
+                            <img id="event-image" src="leavin-the-room-bridge48.jpg" alt="Leavin&rsquo; the Room at Bridge 48, Barcelona" class="absolute inset-0 w-full h-full object-cover grayscale transition-all duration-[2s]">
+                            <div class="absolute top-4 left-4 bg-brand-gold text-brand-black font-bold px-3 py-1 rounded text-sm uppercase z-10">
+                                Sold Out
+                            </div>
+                        </div>
+                        <div class="md:w-3/5 p-8 md:p-12 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center space-x-3 mb-4 text-brand-white/60">
+                                    <i class="fa-regular fa-calendar"></i>
+                                    <span class="text-sm font-medium tracking-wider uppercase">May 2026</span>
+                                </div>
+                                <h3 class="text-3xl md:text-4xl font-display font-bold mb-4">LEAVIN&rsquo; THE ROOM</h3>
+                                <p class="text-brand-white/70 mb-6">
+                                    What started in a living room got bigger than the room could hold. The walls got too hot. The neighbours got too patient. On Sunday 24 May we stepped out for the first time, at Bridge 48. Same intention, same energy, finally with the soundsystem to match.
+                                </p>
+                                <ul class="space-y-2 mb-8 text-sm text-brand-white/60">
+                                    <li class="flex items-center"><i class="fa-solid fa-location-dot w-6"></i> Barcelona</li>
+                                    <li class="flex items-center"><i class="fa-solid fa-music w-6"></i> Bridge 48</li>
+                                    <li class="flex items-center"><i class="fa-solid fa-users w-6"></i> 7 DJs &middot; 150 people &middot; Sold out</li>
+                                </ul>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <a href="sessions.html" class="px-8 py-3 border border-brand-white/20 rounded-full hover:bg-brand-surface transition-colors font-medium">
+                                    Watch the sets
+                                </a>
+                                <a href="leavin-the-room.html" class="px-8 py-3 border border-brand-white/20 rounded-full hover:bg-brand-surface transition-colors font-medium">
+                                    See the photos
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 8: CONTACT (Clean centered + spinning vinyls) ==================== -->
+        <section id="contact" class="relative py-32 px-6">
+            <div class="max-w-4xl mx-auto text-center relative z-10">
+                <!-- Heading -->
+                <h2 class="text-5xl md:text-7xl font-display font-bold text-brand-white leading-[0.9] mb-4">
+                    LET'S MAKE <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-brand-purple to-brand-teal">NOISE.</span>
+                </h2>
+                <p class="text-lg text-brand-white/50 mb-16">Get in touch.</p>
+
+                <!-- 3 Contact Cards with Spinning Vinyls -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-8 mb-16">
+                    <!-- Instagram -->
+                    <a href="https://instagram.com/airfryer_collective" target="_blank" class="glass-card rounded-xl md:rounded-2xl p-4 md:p-8 flex flex-col items-center text-center group">
+                        <div class="w-14 h-14 md:w-20 md:h-20 rounded-full relative mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <!-- Mini spinning vinyl -->
+                            <div class="absolute inset-0 rounded-full border border-brand-white/10 bg-brand-surface animate-spin-slow">
+                                <div class="absolute inset-0 bg-vinyl-shine opacity-20 rounded-full"></div>
+                                <div class="absolute inset-[15%] rounded-full border border-brand-white/5"></div>
+                                <div class="absolute inset-[30%] rounded-full border border-brand-white/5"></div>
+                            </div>
+                            <!-- Icon center label -->
+                            <div class="absolute inset-0 flex items-center justify-center z-10">
+                                <div class="w-7 h-7 md:w-9 md:h-9 rounded-full bg-brand-surface border border-brand-white/10 flex items-center justify-center">
+                                    <i class="fa-brands fa-instagram text-brand-gold text-sm md:text-base"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="text-sm md:text-lg font-display font-bold text-brand-white mb-1 group-hover:text-brand-gold transition-colors">Instagram</h3>
+                        <p class="text-brand-white/50 text-[10px] md:text-sm hidden md:block">@airfryer_collective</p>
+                    </a>
+
+                    <!-- YouTube -->
+                    <a href="https://www.youtube.com/@AirfryerCollective" target="_blank" class="glass-card rounded-xl md:rounded-2xl p-4 md:p-8 flex flex-col items-center text-center group">
+                        <div class="w-14 h-14 md:w-20 md:h-20 rounded-full relative mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <div class="absolute inset-0 rounded-full border border-brand-white/10 bg-brand-surface animate-spin-slow" style="animation-delay: -3s;">
+                                <div class="absolute inset-0 bg-vinyl-shine opacity-20 rounded-full"></div>
+                                <div class="absolute inset-[15%] rounded-full border border-brand-white/5"></div>
+                                <div class="absolute inset-[30%] rounded-full border border-brand-white/5"></div>
+                            </div>
+                            <div class="absolute inset-0 flex items-center justify-center z-10">
+                                <div class="w-7 h-7 md:w-9 md:h-9 rounded-full bg-brand-surface border border-brand-white/10 flex items-center justify-center">
+                                    <i class="fa-brands fa-youtube text-brand-teal text-sm md:text-base"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="text-sm md:text-lg font-display font-bold text-brand-white mb-1 group-hover:text-brand-teal transition-colors">YouTube</h3>
+                        <p class="text-brand-white/50 text-[10px] md:text-sm hidden md:block">Watch the sessions</p>
+                    </a>
+
+                    <!-- Email -->
+                    <a href="mailto:airfryercollective@gmail.com" class="glass-card rounded-xl md:rounded-2xl p-4 md:p-8 flex flex-col items-center text-center group">
+                        <div class="w-14 h-14 md:w-20 md:h-20 rounded-full relative mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <div class="absolute inset-0 rounded-full border border-brand-white/10 bg-brand-surface animate-spin-slow" style="animation-delay: -6s;">
+                                <div class="absolute inset-0 bg-vinyl-shine opacity-20 rounded-full"></div>
+                                <div class="absolute inset-[15%] rounded-full border border-brand-white/5"></div>
+                                <div class="absolute inset-[30%] rounded-full border border-brand-white/5"></div>
+                            </div>
+                            <div class="absolute inset-0 flex items-center justify-center z-10">
+                                <div class="w-7 h-7 md:w-9 md:h-9 rounded-full bg-brand-surface border border-brand-white/10 flex items-center justify-center">
+                                    <i class="fa-regular fa-envelope text-brand-purple text-sm md:text-base"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="text-sm md:text-lg font-display font-bold text-brand-white mb-1 group-hover:text-brand-purple transition-colors">Email Us</h3>
+                        <p class="text-brand-white/50 text-[10px] md:text-sm hidden md:block">airfryercollective@gmail.com</p>
+                    </a>
+
+                    <!-- Partnerships -->
+                    <a href="/partnerships" class="glass-card rounded-xl md:rounded-2xl p-4 md:p-8 flex flex-col items-center text-center group">
+                        <div class="w-14 h-14 md:w-20 md:h-20 rounded-full relative mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <!-- Mini spinning vinyl -->
+                            <div class="absolute inset-0 rounded-full border border-brand-white/10 bg-brand-surface animate-spin-slow">
+                                <div class="absolute inset-0 bg-vinyl-shine opacity-20 rounded-full"></div>
+                                <div class="absolute inset-[15%] rounded-full border border-brand-white/5"></div>
+                                <div class="absolute inset-[30%] rounded-full border border-brand-white/5"></div>
+                            </div>
+                            <!-- Icon center label -->
+                            <div class="absolute inset-0 flex items-center justify-center z-10">
+                                <div class="w-7 h-7 md:w-9 md:h-9 rounded-full bg-brand-surface border border-brand-white/10 flex items-center justify-center">
+                                    <i class="fa-solid fa-handshake text-brand-gold text-sm md:text-base"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="text-sm md:text-lg font-display font-bold text-brand-white mb-1 group-hover:text-brand-gold transition-colors">Partnerships</h3>
+                        <p class="text-brand-white/50 text-[10px] md:text-sm hidden md:block">Venues, brands, collaborations</p>
+                    </a>
+                </div>
+
+                <!-- Barcelona -->
+                <p class="text-xs font-display font-bold tracking-[0.3em] uppercase text-brand-white/30">Barcelona</p>
+            </div>
+        </section>
+
+        <!-- Audience Categories -->
+        <section class="py-20 border-t border-brand-white/5 relative overflow-hidden">
+            <div class="max-w-[1440px] mx-auto px-6">
+                <div class="grid grid-cols-3 gap-3 md:gap-8">
+                    <div class="glass-card rounded-xl md:rounded-2xl p-4 md:p-8 flex flex-col items-center text-center group">
+                        <div class="w-12 h-12 md:w-16 md:h-16 rounded-full relative mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <div class="absolute inset-0 rounded-full border border-brand-white/10 bg-brand-surface animate-spin-slow">
+                                <div class="absolute inset-0 bg-vinyl-shine opacity-20 rounded-full"></div>
+                                <div class="absolute inset-[20%] rounded-full border border-brand-white/5"></div>
+                            </div>
+                            <div class="absolute inset-0 flex items-center justify-center z-10">
+                                <div class="w-6 h-6 md:w-7 md:h-7 rounded-full bg-brand-surface border border-brand-white/10 flex items-center justify-center">
+                                    <i class="fa-solid fa-music text-[10px] md:text-xs text-brand-gold"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="text-xs md:text-xl font-display font-bold text-brand-white mb-1 md:mb-2">Music</h3>
+                        <p class="text-brand-white/50 text-[10px] md:text-sm leading-relaxed hidden md:block">Are you a DJ? Send your sets via Instagram DM. We listen to everything.</p>
+                        <p class="text-brand-white/50 text-[10px] leading-tight md:hidden">Send your sets via DM</p>
+                    </div>
+
+                    <div class="glass-card rounded-xl md:rounded-2xl p-4 md:p-8 flex flex-col items-center text-center group">
+                        <div class="w-12 h-12 md:w-16 md:h-16 rounded-full relative mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <div class="absolute inset-0 rounded-full border border-brand-white/10 bg-brand-surface animate-spin-slow" style="animation-delay: -3s;">
+                                <div class="absolute inset-0 bg-vinyl-shine opacity-20 rounded-full"></div>
+                                <div class="absolute inset-[20%] rounded-full border border-brand-white/5"></div>
+                            </div>
+                            <div class="absolute inset-0 flex items-center justify-center z-10">
+                                <div class="w-6 h-6 md:w-7 md:h-7 rounded-full bg-brand-surface border border-brand-white/10 flex items-center justify-center">
+                                    <i class="fa-solid fa-building text-[10px] md:text-xs text-brand-purple"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="text-xs md:text-xl font-display font-bold text-brand-white mb-1 md:mb-2">Venues</h3>
+                        <p class="text-brand-white/50 text-[10px] md:text-sm leading-relaxed hidden md:block">Have a space in Barcelona? Let's bring the Airfryer vibe to your venue.</p>
+                        <p class="text-brand-white/50 text-[10px] leading-tight md:hidden">Bring the vibe to your space</p>
+                    </div>
+
+                    <div class="glass-card rounded-xl md:rounded-2xl p-4 md:p-8 flex flex-col items-center text-center group">
+                        <div class="w-12 h-12 md:w-16 md:h-16 rounded-full relative mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <div class="absolute inset-0 rounded-full border border-brand-white/10 bg-brand-surface animate-spin-slow" style="animation-delay: -6s;">
+                                <div class="absolute inset-0 bg-vinyl-shine opacity-20 rounded-full"></div>
+                                <div class="absolute inset-[20%] rounded-full border border-brand-white/5"></div>
+                            </div>
+                            <div class="absolute inset-0 flex items-center justify-center z-10">
+                                <div class="w-6 h-6 md:w-7 md:h-7 rounded-full bg-brand-surface border border-brand-white/10 flex items-center justify-center">
+                                    <i class="fa-solid fa-handshake text-[10px] md:text-xs text-brand-teal"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="text-xs md:text-xl font-display font-bold text-brand-white mb-1 md:mb-2">Collabs</h3>
+                        <p class="text-brand-white/50 text-[10px] md:text-sm leading-relaxed hidden md:block">Brands, artists, photographers. We're open to creative partnerships.</p>
+                        <p class="text-brand-white/50 text-[10px] leading-tight md:hidden">Open to partnerships</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== SECTION 9: FOOTER ==================== -->
+    <footer class="bg-brand-dark py-12 px-6 border-t border-brand-white/5">
+        <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3 mb-6 md:mb-0">
+                <div class="w-8 h-8 overflow-hidden flex-shrink-0" style="margin-top: -4px;">
+                    <img src="mascot-white.png" alt="Airfryer Collective" class="w-full object-cover object-top" style="height: 135%; margin-top: -5%;">
+                </div>
+                <span class="font-display font-bold text-lg tracking-tight">AIRFRYER <span class="text-brand-white/70">COLLECTIVE</span></span>
+            </div>
+
+            <div class="flex items-center space-x-8 mb-6 md:mb-0">
+                <a href="https://instagram.com/airfryer_collective" target="_blank" class="text-brand-white/50 hover:text-brand-gold transition-colors text-sm">Instagram</a>
+                <a href="https://www.youtube.com/@AirfryerCollective" target="_blank" class="text-brand-white/50 hover:text-brand-gold transition-colors text-sm">YouTube</a>
+                <a href="mailto:airfryercollective@gmail.com" class="text-brand-white/50 hover:text-brand-gold transition-colors text-sm">Email</a>
+            </div>
+
+            <div class="text-brand-white/30 text-xs text-center md:text-right">
+                <p>&copy; 2026 Airfryer Collective. Barcelona.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Preloader: dismiss on scroll or click
+        const preloader = document.getElementById('preloader');
+        function dismissPreloader() {
+            preloader.classList.add('loaded');
+        }
+        // Dismiss on click/tap
+        preloader.addEventListener('click', dismissPreloader);
+        // Dismiss on scroll
+        window.addEventListener('wheel', function handler() {
+            dismissPreloader();
+            window.removeEventListener('wheel', handler);
+        });
+        window.addEventListener('touchmove', function handler() {
+            dismissPreloader();
+            window.removeEventListener('touchmove', handler);
+        });
+        // Auto-dismiss after 5 seconds if user doesn't interact
+        setTimeout(dismissPreloader, 3000);
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-brand-black/80', 'backdrop-blur-md', 'shadow-lg');
+                navbar.classList.remove('py-6');
+                navbar.classList.add('py-4');
+            } else {
+                navbar.classList.remove('bg-brand-black/80', 'bg-brand-black', 'backdrop-blur-md', 'shadow-lg');
+                navbar.classList.remove('py-4');
+                navbar.classList.add('py-6');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            const navbar = document.getElementById('navbar');
+            if (!mobileMenu.classList.contains('hidden')) {
+                navbar.classList.add('bg-brand-black', 'h-screen', 'overflow-hidden');
+                document.body.classList.add('overflow-hidden');
+            } else {
+                navbar.classList.remove('bg-brand-black', 'h-screen', 'overflow-hidden');
+                document.body.classList.remove('overflow-hidden');
+            }
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
+        });
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                const navbar = document.getElementById('navbar');
+                navbar.classList.remove('bg-brand-black', 'h-screen', 'overflow-hidden');
+                document.body.classList.remove('overflow-hidden');
+                mobileMenuBtn.querySelector('i').classList.remove('fa-xmark');
+                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // Scrolling handled by CSS: scroll-behavior: smooth + scroll-padding-top: 80px
+
+        // Active nav section highlight on scroll
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = ['hero', 'sessions', 'about', 'artists', 'events'];
+        window.addEventListener('scroll', function() {
+            let current = '';
+            sections.forEach(id => {
+                const section = document.getElementById(id);
+                if (section && window.scrollY >= section.offsetTop - 200) {
+                    current = id;
+                }
+            });
+            navLinks.forEach(link => {
+                if (link.dataset.section === current) {
+                    link.classList.add('bg-brand-white/10', 'text-brand-white');
+                    link.classList.remove('text-brand-white/70');
+                } else {
+                    link.classList.remove('bg-brand-white/10', 'text-brand-white');
+                    link.classList.add('text-brand-white/70');
+                }
+            });
+        });
+
+        // Crossfader
+        (function() {
+            const knob = document.getElementById('crossfader-knob');
+            const track = document.getElementById('crossfader-track');
+            const labels = document.querySelectorAll('.crossfader-label');
+            const panels = {
+                0: document.getElementById('panel-venues'),
+                1: document.getElementById('panel-music'),
+                2: document.getElementById('panel-djs')
+            };
+            const positions = [0, 50, 100]; // knob positions in %
+            let current = 1; // default: Music Lovers (center)
+
+            function switchTo(index) {
+                if (index === current) return;
+                current = index;
+                // Move knob
+                knob.style.left = positions[index] + '%';
+                // Update labels
+                labels.forEach(l => {
+                    l.classList.remove('active', 'text-brand-gold');
+                    l.classList.add('text-brand-white/40');
+                });
+                labels[index].classList.add('active', 'text-brand-gold');
+                labels[index].classList.remove('text-brand-white/40');
+                // Swap panels
+                Object.values(panels).forEach(p => {
+                    p.classList.remove('visible-content');
+                    p.classList.add('hidden-content');
+                });
+                panels[index].classList.remove('hidden-content');
+                panels[index].classList.add('visible-content');
+            }
+
+            // Click on labels
+            labels.forEach((label, i) => {
+                label.addEventListener('click', () => switchTo(i));
+            });
+
+            // Click on track
+            track.addEventListener('click', (e) => {
+                const rect = track.getBoundingClientRect();
+                const pct = ((e.clientX - rect.left) / rect.width) * 100;
+                const closest = pct < 25 ? 0 : pct < 75 ? 1 : 2;
+                switchTo(closest);
+            });
+
+            // Drag knob
+            let dragging = false;
+            knob.addEventListener('mousedown', (e) => { dragging = true; e.preventDefault(); });
+            knob.addEventListener('touchstart', () => { dragging = true; }, { passive: true });
+            function onMove(clientX) {
+                if (!dragging) return;
+                const rect = track.getBoundingClientRect();
+                const pct = Math.max(0, Math.min(100, ((clientX - rect.left) / rect.width) * 100));
+                knob.style.left = pct + '%';
+                knob.style.transition = 'none';
+            }
+            function onEnd(clientX) {
+                if (!dragging) return;
+                dragging = false;
+                knob.style.transition = '';
+                const rect = track.getBoundingClientRect();
+                const pct = ((clientX - rect.left) / rect.width) * 100;
+                const closest = pct < 25 ? 0 : pct < 75 ? 1 : 2;
+                switchTo(closest);
+            }
+            document.addEventListener('mousemove', (e) => onMove(e.clientX));
+            document.addEventListener('mouseup', (e) => onEnd(e.clientX));
+            document.addEventListener('touchmove', (e) => onMove(e.touches[0].clientX), { passive: true });
+            document.addEventListener('touchend', (e) => onEnd(e.changedTouches[0].clientX));
+        })();
+
+        // Event image: grayscale → color on scroll into view
+        const eventImg = document.getElementById('event-image');
+        if (eventImg) {
+            const imgObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        eventImg.classList.remove('grayscale');
+                        imgObserver.unobserve(eventImg);
+                    }
+                });
+            }, { threshold: 0.3 });
+            imgObserver.observe(eventImg);
+        }
+
+        // Marquee animation
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes scroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
