@@ -93,6 +93,10 @@ section{padding:88px 72px 32px;max-width:1080px;scroll-margin-top:24px}@media(ma
 .bridge-cta a:hover{border-bottom-color:var(--af-amber)}
 /* mobile: the full-bleed sections carry inline 72px side padding, which beat the 24px mobile rule */
 @media(max-width:900px){section[style]{padding-left:24px!important;padding-right:24px!important}.bridge__left{padding:28px 24px}}
+/* mobile cover: the original mobile rules sit above the base .cover rules and lose, so restate the layout ones here;
+   the bottom strip has 2 cells but was forced into 3 columns, breaking the links mid-word */
+@media(max-width:900px){.cover{padding-left:24px;padding-right:24px}.cover__cell,.cover__cell:first-child{padding:0}.cover__cell:not(:first-child)::before{display:none}.cover__bottom{grid-template-columns:auto 1fr!important;gap:16px 32px}.cover__val{word-break:normal}}
+@media(max-width:360px){.cover__bottom{grid-template-columns:1fr!important}}
 .bridge__right--sets{grid-template-columns:1fr;grid-template-rows:none;align-content:start;min-height:0}
 .bridge__right--sets .bridge-cell{display:block;aspect-ratio:16/9}
 .bridge-more{grid-column:1/-1;background:var(--af-surface);padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--af-white-50)}
