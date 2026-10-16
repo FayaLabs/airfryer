@@ -97,8 +97,9 @@ section{padding:88px 72px 32px;max-width:1080px;scroll-margin-top:24px}@media(ma
 .bridge__right--sets .bridge-cell{display:block;aspect-ratio:16/9}
 .bridge-more{grid-column:1/-1;background:var(--af-surface);padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--af-white-50)}
 .bridge-more b{color:var(--af-amber);font-weight:500}
-.sessions--feature{grid-template-columns:repeat(3,1fr);margin:40px 0 0}@media(max-width:900px){.sessions--feature{grid-template-columns:1fr}}
-.sessions--feature .session-card__name{font-size:16px}
+.sessions--hero{grid-template-columns:1fr;margin:40px 0 0}.sessions--hero .session-card__name{font-size:18px}.sessions--hero .session-card__play{width:64px;height:64px}
+.sessions--pair{grid-template-columns:repeat(2,1fr);margin:32px 0 0}@media(max-width:540px){.sessions--pair{grid-template-columns:1fr}}.sessions--pair .session-card__name{font-size:16px}
+.bridge-cell:hover .session-card__play{background:var(--af-white)}.bridge-cell:hover .session-card__play svg{fill:var(--af-black)}
 </style>
 </head>
 <body>
@@ -311,8 +312,8 @@ section{padding:88px 72px 32px;max-width:1080px;scroll-margin-top:24px}@media(ma
       <p class="bridge__body"><span class="es">En julio lo volvimos a hacer, en Espai Salvadiscos: una asociaci&oacute;n musical de Barcelona con miles de socios, construida alrededor del vinilo, la escucha y la comunidad. Normalmente solo para socios. Nos abrieron las puertas, y se agotaron las entradas. Andr&eacute;s Divitto, Leo Janeiro y Paz Waz Here a los platos.</span><span class="en">In July we did it again, at Espai Salvadiscos: a Barcelona music association with thousands of members, built around vinyl, listening and community. Normally members-only. They opened the doors for us, and the night sold out. Andr&eacute;s Divitto, Leo Janeiro and Paz Waz Here on the decks.</span></p>
     </div>
     <div class="bridge__right bridge__right--sets">
-      <a class="bridge-cell" href="https://youtu.be/Oq45UGmvxBE" target="_blank" rel="noopener"><img src="/thumbs/salvadiscos/leo-janeiro.jpg" alt="Leo Janeiro at Salva Discos" loading="lazy"></a>
-      <a class="bridge-cell" href="https://youtu.be/oPAwYG0t9I8" target="_blank" rel="noopener"><img src="/thumbs/salvadiscos/andres-divitto.jpg" alt="Andr&eacute;s Divitto at Salva Discos" loading="lazy"></a>
+      <a class="bridge-cell" href="https://youtu.be/Oq45UGmvxBE" target="_blank" rel="noopener"><img src="/thumbs/salvadiscos/leo-janeiro.jpg" alt="Leo Janeiro at Salva Discos" loading="lazy"><span class="session-card__play"><svg width="18" height="18" fill="var(--af-white)" viewBox="0 0 20 20"><polygon points="6,3 18,10 6,17"/></svg></span></a>
+      <a class="bridge-cell" href="https://youtu.be/oPAwYG0t9I8" target="_blank" rel="noopener"><img src="/thumbs/salvadiscos/andres-divitto.jpg" alt="Andr&eacute;s Divitto at Salva Discos" loading="lazy"><span class="session-card__play"><svg width="18" height="18" fill="var(--af-white)" viewBox="0 0 20 20"><polygon points="6,3 18,10 6,17"/></svg></span></a>
       <div class="bridge-more"><span><span class="es">M&aacute;s sets en camino</span><span class="en">More sets to come</span></span><b><span class="es">Pr&oacute;ximo: Paz Waz Here</span><span class="en">Next: Paz Waz Here</span></b></div>
     </div>
   </div>
@@ -322,9 +323,11 @@ section{padding:88px 72px 32px;max-width:1080px;scroll-margin-top:24px}@media(ma
 <section id="s06" style="background:var(--af-darkest);border-top:1px solid var(--af-white-10);border-bottom:1px solid var(--af-white-10);max-width:none;padding-left:72px;padding-right:72px">
   <div style="max-width:1080px">
   <div class="section-head reveal"><div><div class="section-num"><span>06</span><span class="div"></span><span class="es">Compru&eacute;balo</span><span class="en">See for yourself</span></div><h2>Watch</h2></div></div>
-  <div class="sessions sessions--feature reveal">
-    <a class="session-card" href="https://youtu.be/iThWGMtdAk4" target="_blank" rel="noopener"><div class="session-card__thumb"><img src="/thumbs/living-room/soulfie.jpg" alt="Soulfie" loading="lazy"><span class="session-card__no">#15</span><span class="session-card__play"><svg width="18" height="18" fill="var(--af-white)" viewBox="0 0 20 20"><polygon points="6,3 18,10 6,17"/></svg></span></div><h3 class="session-card__name">Soulfie</h3><p class="session-card__desc">Session #15 · Brazil · House</p></a>
+  <div class="sessions sessions--hero reveal">
     <a class="session-card" href="https://youtu.be/D4Hc6bTMGL0" target="_blank" rel="noopener"><div class="session-card__thumb"><img src="/thumbs/bridge48/valderrama.jpg" alt="Valderrama" loading="lazy"><span class="session-card__no">Bridge 48</span><span class="session-card__play"><svg width="18" height="18" fill="var(--af-white)" viewBox="0 0 20 20"><polygon points="6,3 18,10 6,17"/></svg></span></div><h3 class="session-card__name">Valderrama</h3><p class="session-card__desc">Leavin&rsquo; the Room @ Bridge 48 · Indie Dance</p></a>
+  </div>
+  <div class="sessions sessions--pair reveal">
+    <a class="session-card" href="https://youtu.be/iThWGMtdAk4" target="_blank" rel="noopener"><div class="session-card__thumb"><img src="/thumbs/living-room/soulfie.jpg" alt="Soulfie" loading="lazy"><span class="session-card__no">#15</span><span class="session-card__play"><svg width="18" height="18" fill="var(--af-white)" viewBox="0 0 20 20"><polygon points="6,3 18,10 6,17"/></svg></span></div><h3 class="session-card__name">Soulfie</h3><p class="session-card__desc">Session #15 · Brazil · House</p></a>
     <a class="session-card" href="https://youtu.be/Oq45UGmvxBE" target="_blank" rel="noopener"><div class="session-card__thumb"><img src="/thumbs/salvadiscos/leo-janeiro.jpg" alt="Leo Janeiro" loading="lazy"><span class="session-card__no">Salva Discos</span><span class="session-card__play"><svg width="18" height="18" fill="var(--af-white)" viewBox="0 0 20 20"><polygon points="6,3 18,10 6,17"/></svg></span></div><h3 class="session-card__name">Leo Janeiro</h3><p class="session-card__desc">Leavin&rsquo; the Room @ Salva Discos · Brazil · House</p></a>
   </div>
   <div class="sessions reveal">
