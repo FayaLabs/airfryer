@@ -1,0 +1,24 @@
+# Links to the old static site, including printed dossiers and QR codes.
+# Netlify also served each page without .html, so both forms stay alive.
+/sessions.html /library 301
+/sessions /library 301
+/leavin-the-room.html /experience#gallery 301
+/leavin-the-room /experience#gallery 301
+/session-andres-divitto.html /library/PxE58mDfmA4 301
+/session-andres-divitto /library/PxE58mDfmA4 301
+/session-dubbelle.html /library/pLGyy7kkAHk 301
+/session-dubbelle /library/pLGyy7kkAHk 301
+/session-ezera.html /library/llMg7pImNsU 301
+/session-ezera /library/llMg7pImNsU 301
+/session-henry-carlin.html /library/892ogtvgm5M 301
+/session-henry-carlin /library/892ogtvgm5M 301
+/session-keyblow.html /library/QTKRufMAuMc 301
+/session-keyblow /library/QTKRufMAuMc 301
+/session-le-bulla.html /library/sFto1Cpjzm8 301
+/session-le-bulla /library/sFto1Cpjzm8 301
+/session-marco-boarelli.html /library/Ivd6Lh5xJZw 301
+/session-marco-boarelli /library/Ivd6Lh5xJZw 301
+/session-nuup-b2b-valderrama.html /library/UUWR6SZaU2I 301
+/session-nuup-b2b-valderrama /library/UUWR6SZaU2I 301
+/session-omaya.html /library/tckwNO78RaI 301
+/session-omaya /library/tckwNO78RaI 301

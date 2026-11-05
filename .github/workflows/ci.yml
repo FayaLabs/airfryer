@@ -73,3 +73,9 @@ jobs:
           done
           curl -s -H 'Accept-Language: pt-BR' "$BASE/product/camisa-viva-los-seres-que-bailan" | grep -q 'Adicionar ao carrinho'
           [ "$(curl -s -o /dev/null -w '%{http_code}' "$BASE/nope")" = 404 ]
+          # Links from the old static site, including printed dossiers.
+          for p in /processo/ /salvadiscos/; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "$BASE$p")
+            echo "$p -> $code"; [ "$code" = 200 ]
+          done
+          [ "$(curl -s -o /dev/null -w '%{http_code}' "$BASE/sessions.html")" = 301 ]
