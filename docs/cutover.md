@@ -1,16 +1,12 @@
 # Putting the new site live
 
-Today `airfryercollective.com` is served by Netlify and the new site is a
-Cloudflare Worker. Merging this code doesn't move the domain: `netlify.toml`
-keeps Netlify on `legacy/`, and only the DNS change in step 5 switches visitors.
+Today `airfryercollective.com` serves the old static site, uploaded to Netlify by
+hand. The new site is a Cloudflare Worker. Pushing to this repository doesn't
+change Netlify, so merging doesn't affect visitors. Only the DNS change in step 4
+switches them. Until then, any fix to the old site is edited in `legacy/` and
+that folder is uploaded to Netlify.
 
-## 1. Before merging
-
-- [ ] In Netlify, check how the site deploys: linked to this repository, or
-      uploaded by hand. Either way the merge shouldn't change the live site, but
-      a linked site is worth watching on its first deploy.
-
-## 2. Connect this repository to Cloudflare
+## 1. Connect this repository to Cloudflare
 
 Add these in Settings → Secrets and variables → Actions:
 
@@ -28,7 +24,7 @@ the `workers.dev` URL.
 Then stop deploying from `FayaLabs/airfryer-shop`, so two repositories don't
 overwrite the same Worker.
 
-## 3. Add the store data in GoControl
+## 2. Add the store data in GoControl
 
 Without this, Spanish buyers see BRL prices and `/shirt` has no sizes.
 
@@ -40,7 +36,7 @@ Without this, Spanish buyers see BRL prices and `/shirt` has no sizes.
 - [ ] Connect a Stripe account. Until then, orders stay pending.
 - [ ] Decide on VAT. Nothing calculates it today.
 
-## 4. Check the new site on `workers.dev`
+## 3. Check the new site on `workers.dev`
 
 - [ ] Home, Library, Partnerships and the shirt, in all three languages.
 - [ ] A full test purchase, from Spain and from Brazil.
@@ -48,19 +44,20 @@ Without this, Spanish buyers see BRL prices and `/shirt` has no sizes.
       `/salvadiscos/`.
 - [ ] The QR codes in the Salva Discos dossier.
 
-## 5. Move the domain
+## 4. Move the domain
 
 1. Add `airfryercollective.com` as a custom domain on the Worker. This changes
    DNS, so lower the record's TTL a day earlier if you can.
 2. Set the `PUBLIC_SITE_ORIGIN` variable to `https://airfryercollective.com`.
 3. Re-run the deploy, so canonical and social links use the real domain.
 
-To roll back, point DNS back to Netlify. It keeps serving `legacy/` until step 6.
+To roll back, point DNS back to Netlify. Its last upload stays in place until
+step 5.
 
-## 6. Clean up, after a week or so
+## 5. Clean up, after a week or so
 
-- [ ] Delete `legacy/` and `netlify.toml`, after moving the PDF tooling in
-      `legacy/salvadiscos/` if you still use it.
+- [ ] Delete `legacy/`, after moving the PDF tooling in `legacy/salvadiscos/` if
+      you still use it.
 - [ ] Decide on the old partnerships dossier. It's only in `legacy/partnerships/`,
       and its URL now shows the new landing page.
 - [ ] Turn off the Netlify site and archive `FayaLabs/airfryer-shop`.

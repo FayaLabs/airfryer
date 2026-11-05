@@ -4,8 +4,9 @@ The Airfryer Collective site and shop: community pages, the sessions library
 and the shirt. Server-rendered on TanStack Start with the `@fayz-ai` storefront
 SDK, deployed as a Cloudflare Worker. Products and orders live in GoControl.
 
-`airfryercollective.com` is still served by Netlify from `legacy/` until the
-cutover in [docs/cutover.md](docs/cutover.md).
+`airfryercollective.com` still serves the old static site, uploaded to Netlify
+by hand from what is now `legacy/`, until the cutover in
+[docs/cutover.md](docs/cutover.md).
 
 ## Where things are
 
