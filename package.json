@@ -1,0 +1,42 @@
+{
+  "name": "airfryer-shop",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev --port 5320 --strictPort",
+    "typecheck": "tsc --noEmit",
+    "build": "vite build",
+    "preview": "wrangler dev -c dist/server/wrangler.json --port 5321",
+    "deploy": "npm run build && wrangler deploy -c dist/server/wrangler.json",
+    "cf-typegen": "wrangler types"
+  },
+  "dependencies": {
+    "@fayz-ai/core": "^0.78.0",
+    "@fayz-ai/shop": "^0.78.0",
+    "@fayz-ai/storefront": "^0.78.0",
+    "@fayz-ai/ui": "^0.78.0",
+    "@supabase/supabase-js": "^2.45.0",
+    "@tanstack/react-router": "^1.168.0",
+    "@tanstack/react-start": "^1.168.0",
+    "gsap": "^3.15.0",
+    "lucide-react": "^0.577.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "zustand": "^4.5.0",
+    "sonner": "^2.0.7"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.50.0",
+    "@types/node": "^25.9.3",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.5.0",
+    "vite": "^7.3.0",
+    "wrangler": "^4.118.0"
+  }
+}

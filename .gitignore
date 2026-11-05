@@ -1,2 +1,17 @@
 node_modules/
-.DS_Store
+dist/
+.env
+.env.local
+.env.*.local
+.output/
+.wrangler/
+.vite/
+.dev.vars
+worker-configuration.d.ts
+
+# Local working files that stay out of this public repository.
+docs/refs/
+brand/explorations/
+brand/direction-*/
+brand/AUDIT.md
+.playwright-mcp/
