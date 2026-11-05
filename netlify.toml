@@ -1,6 +1,0 @@
-# Keeps airfryercollective.com on the old static site until DNS moves to the
-# Cloudflare Worker. Remove this file with legacy/ at cutover (docs/cutover.md).
-[build]
-  base = "legacy"
-  publish = "."
-  command = "echo 'static site, nothing to build'"
