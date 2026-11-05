@@ -1,0 +1,11 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // The Worker name is the deployment identity: `wrangler deploy` replaces the
+  // live version of this name.
+  "name": "airfryer-shop",
+  "compatibility_date": "2025-09-02",
+  "compatibility_flags": ["nodejs_compat"],
+  // src/host/server.ts wraps Start's default handler with the edge cache.
+  "main": "src/host/server.ts",
+  "observability": { "enabled": true }
+}

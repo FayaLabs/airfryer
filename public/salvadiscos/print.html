@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Airfryer Collective — Dossier (Print)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper:#FAFAF7;--card:#F4EFE6;--ink:#1A1714;
+  --ink80:rgba(26,23,20,.80);--ink60:rgba(26,23,20,.60);--ink50:rgba(26,23,20,.50);
+  --ink40:rgba(26,23,20,.40);--ink25:rgba(26,23,20,.25);--ink15:rgba(26,23,20,.15);--ink10:rgba(26,23,20,.10);
+  --amber:#A6703F;--amberbg:#FBF5E4;--teal:#4F7B73;--purple:#6F558F;
+  --live:#3A7A4E;
+  --display:'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+  --body:'DM Sans','Helvetica Neue',Arial,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+}
+
+@page { size: A4; margin: 0; }
+* { box-sizing:border-box; margin:0; padding:0; }
+html,body { background:var(--paper); color:var(--ink); font-family:var(--body); font-size:10.5pt; line-height:1.55; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+
+/* each section is a page */
+.pg { break-before: page; padding: 16mm 20mm; }
+.pg:first-child { break-before: auto; }
+body > div:first-of-type { padding: 16mm 20mm; }
+
+/* prevent breaks inside these */
+.finding, .feat, .quote, .kpi, .founder, .timeline li, .bridge, .photo-full, .prose p { break-inside: avoid; }
+
+/* print button */
+.print-btn{position:fixed;bottom:24px;right:24px;z-index:50;padding:12px 24px;background:var(--ink);color:var(--paper);font-family:var(--display);font-size:11px;letter-spacing:.18em;text-transform:uppercase;border:none;border-radius:999px;cursor:pointer}
+@media print{.print-btn{display:none}}
+
+/* ========== COVER ========== */
+.cover-tag{font-family:var(--mono);font-size:8pt;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:8mm}
+.cover-title{font-family:var(--display);font-weight:700;font-size:42pt;line-height:.92;letter-spacing:-.02em;text-transform:uppercase;color:var(--ink);margin-bottom:6mm}
+.cover-title .holo{color:var(--amber);font-style:italic;font-weight:500}
+.cover-lede{max-width:150mm;font-size:11pt;line-height:1.5;color:var(--ink80);margin-bottom:3mm}
+.cover-reveal{font-family:var(--display);font-size:13pt;font-weight:600;color:var(--ink);margin-bottom:10mm}
+.cover-bottom{display:grid;grid-template-columns:repeat(3,1fr);gap:6mm;border-top:.75pt solid var(--ink25);padding-top:5mm;margin-top:8mm}
+.cover-lbl{font-family:var(--mono);font-size:7pt;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:2mm}
+.cover-val{font-family:var(--body);font-size:9.5pt;color:var(--ink);line-height:1.5}
+.cover-qr{margin-top:3mm}
+
+/* ========== SECTIONS ========== */
+.section-head{border-bottom:.75pt solid var(--ink25);padding-bottom:4mm;margin-bottom:6mm}
+.section-num{font-family:var(--mono);font-size:8pt;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:2mm}
+.section-head h2{font-family:var(--display);font-weight:700;font-size:24pt;line-height:1;letter-spacing:-.01em;text-transform:uppercase}
+
+/* prose */
+.prose{max-width:160mm}
+.prose p{margin:0 0 3mm;font-size:10.5pt;line-height:1.6;color:var(--ink80)}
+.prose p:last-child{margin-bottom:0}
+.prose p.lead{font-size:11.5pt;line-height:1.45;color:var(--ink);font-weight:400}
+.prose strong{color:var(--ink);font-weight:600}
+
+/* finding */
+.finding{background:var(--amberbg);border-left:2.5pt solid var(--amber);padding:4mm 5mm;margin:5mm 0;break-inside:avoid}
+.finding__label{font-family:var(--mono);font-size:7pt;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:2mm}
+.finding__body{font-family:var(--display);font-size:12pt;line-height:1.35;font-weight:600;color:var(--ink)}
+.finding__sub{font-family:var(--body);font-size:9.5pt;line-height:1.5;color:var(--ink60);margin-top:2mm}
+
+/* subtitle */
+.subtitle{font-family:var(--display);font-weight:600;font-size:14pt;letter-spacing:.04em;text-transform:uppercase;color:var(--ink40);margin:6mm 0 4mm}
+
+/* timeline */
+.timeline{margin:4mm 0;padding:0;list-style:none;border-top:.5pt solid var(--ink15)}
+.timeline li{display:grid;grid-template-columns:20mm 1fr;gap:4mm;padding:2.5mm 0;border-bottom:.5pt solid var(--ink15);align-items:baseline;break-inside:avoid}
+.timeline li .tag{font-family:var(--mono);font-size:7.5pt;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);font-weight:500}
+.timeline li .desc{font-size:9.5pt;line-height:1.5;color:var(--ink80)}
+.timeline li .desc strong{color:var(--ink);font-weight:600}
+
+/* photo */
+.photo-full{margin:4mm 0;overflow:hidden}
+.photo-full img{width:100%;display:block;max-height:80mm;object-fit:cover}
+
+/* features */
+.features{display:grid;grid-template-columns:repeat(2,1fr);gap:3mm;margin:4mm 0}
+.features.cols3{grid-template-columns:repeat(3,1fr)}
+.feat{background:var(--card);border:.5pt solid var(--ink10);padding:4mm;display:flex;flex-direction:column;gap:1.5mm;break-inside:avoid}
+.feat__num{font-family:var(--mono);font-size:6.5pt;letter-spacing:.18em;text-transform:uppercase;color:var(--amber)}
+.feat__title{font-family:var(--display);font-weight:600;font-size:9pt;text-transform:uppercase;color:var(--ink)}
+.feat__body{font-family:var(--body);font-size:8.5pt;line-height:1.45;color:var(--ink60)}
+
+/* KPI */
+.kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:.75pt solid var(--ink25);margin:4mm 0}
+.kpi{padding:4mm 3mm;border-right:.5pt solid var(--ink15);display:flex;flex-direction:column;gap:1mm}
+.kpi:last-child{border-right:none}
+.kpi__label{font-family:var(--mono);font-size:6.5pt;letter-spacing:.18em;text-transform:uppercase;color:var(--ink50)}
+.kpi__value{font-family:var(--display);font-weight:700;font-size:24pt;line-height:1.05;color:var(--ink)}
+.kpi__sub{font-size:7.5pt;color:var(--ink50);line-height:1.4;margin-top:auto}
+.kpi__sub strong{color:var(--ink);font-weight:600}
+
+/* extra stats */
+.extra-stats{display:flex;flex-wrap:wrap;gap:1.5mm 5mm;margin:3mm 0;font-family:var(--mono);font-size:7.5pt;letter-spacing:.08em;text-transform:uppercase;color:var(--ink50)}
+.extra-stats strong{color:var(--ink)}
+
+/* bridge */
+.bridge{margin:4mm 0;border:.75pt solid var(--ink25);overflow:hidden}
+.bridge__left{padding:4mm 5mm;display:flex;flex-direction:column;gap:2mm}
+.bridge__badge{align-self:flex-start;display:inline-flex;align-items:center;gap:1.5mm;padding:1mm 3mm;border:.5pt solid var(--live);font-family:var(--mono);font-size:6.5pt;letter-spacing:.18em;text-transform:uppercase;color:var(--live)}
+.bridge__badge .dot{width:1.5mm;height:1.5mm;border-radius:50%;background:var(--live)}
+.bridge__head{font-family:var(--display);font-weight:700;font-size:18pt;line-height:1;text-transform:uppercase}
+.bridge__venue{font-family:var(--display);font-weight:700;font-size:10pt;text-transform:uppercase;color:var(--ink50)}
+.bridge__stats{display:flex;flex-wrap:wrap;gap:1mm 3mm;font-family:var(--mono);font-size:7.5pt;letter-spacing:.1em;text-transform:uppercase;color:var(--ink50)}
+.bridge__stats b{color:var(--ink);font-weight:600}
+.bridge__body{font-size:9.5pt;color:var(--ink80);line-height:1.55}
+.bridge-photos{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:1px}
+.bridge-photos img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+
+/* quotes */
+.quotes{display:grid;grid-template-columns:repeat(2,1fr);gap:3mm;margin:4mm 0}
+.quote{background:var(--card);border:.5pt solid var(--ink10);padding:4mm;display:flex;flex-direction:column;gap:2mm;break-inside:avoid}
+.quote__txt{font-size:9pt;line-height:1.5;color:var(--ink)}
+.quote__attr{display:flex;flex-direction:column;gap:1mm;padding-top:2mm;border-top:.5pt solid var(--ink10)}
+.quote__name{font-family:var(--display);font-size:7.5pt;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);font-weight:600}
+.quote__meta{font-family:var(--mono);font-size:6.5pt;letter-spacing:.12em;text-transform:uppercase;color:var(--ink50)}
+
+/* session cards with QR */
+.featured-session{display:flex;align-items:center;gap:5mm;margin:4mm 0;padding:4mm;background:var(--card);border:.5pt solid var(--ink10);break-inside:avoid}
+.featured-session img.thumb{width:55mm;flex:none;display:block}
+.featured-session img.qr{width:16mm;height:16mm;flex:none}
+
+.sessions-print{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm;margin:4mm 0}
+.session-print{display:flex;flex-direction:column;gap:1.5mm;text-align:center;break-inside:avoid}
+.session-print img{width:16mm;height:16mm;margin:0 auto}
+.session-print__name{font-family:var(--display);font-size:8pt;text-transform:uppercase;font-weight:600}
+.session-print__desc{font-family:var(--body);font-size:7pt;color:var(--ink50);line-height:1.4}
+
+/* founders */
+.founders{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm;margin:4mm 0}
+.founder{display:flex;flex-direction:column;gap:1.5mm;break-inside:avoid}
+.founder__portrait{aspect-ratio:4/5;overflow:hidden;background:var(--card);border:.5pt solid var(--ink10)}
+.founder__portrait img{width:100%;height:100%;object-fit:cover}
+.founder__name{font-family:var(--display);font-weight:600;font-size:8pt;text-transform:uppercase}
+.founder__role{font-family:var(--mono);font-size:6.5pt;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+.founder__bio{font-size:7.5pt;line-height:1.4;color:var(--ink50)}
+
+/* closing */
+.closing-title{font-family:var(--display);font-weight:700;font-size:28pt;line-height:.95;text-transform:uppercase;text-align:center;margin-bottom:4mm}
+.closing-title .holo{color:var(--amber);font-style:italic;font-weight:500}
+.closing-sub{font-size:11pt;color:var(--ink80);text-align:center;margin-bottom:6mm}
+.closing-qr{display:flex;justify-content:center;gap:10mm;margin:4mm 0}
+.closing-qr-item{display:flex;flex-direction:column;align-items:center;gap:1.5mm}
+.closing-qr-item img{width:20mm;height:20mm}
+.closing-qr-item span{font-family:var(--mono);font-size:7pt;color:var(--ink40)}
+.closing-footer{margin-top:8mm;padding-top:4mm;border-top:.5pt solid var(--ink15);font-family:var(--mono);font-size:7pt;letter-spacing:.14em;text-transform:uppercase;color:var(--ink40);text-align:center}
+.sessions-link{text-align:center;margin-top:4mm;font-family:var(--mono);font-size:7.5pt;color:var(--ink40)}
+</style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">Imprimir / Guardar PDF</button>
+
+<!-- COVER -->
+<div>
+  <div class="cover-tag">Dossier de colaboraci&oacute;n cultural &middot; 2026</div>
+  <h1 class="cover-title">Empez&oacute; en un living <span class="holo">room.</span></h1>
+  <p class="cover-lede">Barcelona. Un d&iacute;a entre semana. Un DJ. Veinte amigos que aman la m&uacute;sica. La idea era poner lo que realmente escuchamos, grabar todo y ver qu&eacute; pasa.</p>
+  <p class="cover-lede" style="font-size:9.5pt;color:var(--ink50)">23 sesiones despu&eacute;s, 26 DJs de ocho pa&iacute;ses han tocado con nosotros. 495 personas han pasado por nuestras sesiones. 13 sesiones completas en YouTube. En mayo de 2026, nuestro primer evento en un local fue sold out.</p>
+  <p class="cover-reveal">Esto es Airfryer Collective.</p>
+  <div class="cover-bottom">
+    <div><div class="cover-lbl">Preparado para</div><div class="cover-val">Salva Discos<br>Poble Sec, Barcelona</div></div>
+    <div><div class="cover-lbl">Preparado por</div><div class="cover-val">Airfryer Collective<br>Douglas Monroe</div></div>
+    <div><div class="cover-lbl">Encu&eacute;ntranos</div><div class="cover-val">airfryercollective.com<br>@airfryer_collective</div><img src="qr-website.svg" alt="QR" class="cover-qr" style="width:16mm;height:16mm"></div>
+  </div>
+</div>
+
+<!-- 01 HOW IT STARTED -->
+<div class="pg">
+  <div class="section-head"><div class="section-num">01 &middot; Origen</div><h2>C&oacute;mo empez&oacute;</h2></div>
+  <div class="prose">
+    <p class="lead">Empez&oacute; en mi fiesta de cumplea&ntilde;os.</p>
+    <p>Alquilamos un bar, tres amigos DJs tocaron toda la noche, y vinieron 200 amigos. El feedback nos sorprendi&oacute;. La gente no paraba de decir que era la mejor m&uacute;sica en un evento privado en el que hab&iacute;an estado.</p>
+    <p>Esa noche hizo click. Est&aacute;bamos rodeados de DJs, de gente que vive por la m&uacute;sica, y nadie los estaba conectando. La m&uacute;sica nos hab&iacute;a dado tanto durante a&ntilde;os. Sent&iacute;amos que era momento de devolver algo.</p>
+    <p>As&iacute; que montamos el living room. Invitamos a un amigo DJ, le dijimos a veinte personas que vinieran un mi&eacute;rcoles, y le dimos a grabar.</p>
+    <p>Lo que descubrimos es que algo pasa cuando todos est&aacute;n en la misma habitaci&oacute;n. Sin escenario, sin barrera, sin separaci&oacute;n entre el DJ y el p&uacute;blico. La gente no solo escucha la m&uacute;sica. Se sienten unos a otros.</p>
+  </div>
+  <div class="photo-full"><img src="session01-omaya.jpg" alt="Session #01" style="max-height:95mm"></div>
+  <div class="finding">
+    <div class="finding__label">La revelaci&oacute;n</div>
+    <div class="finding__body">Esto no era un proyecto de DJs. Era un proyecto de comunidad.</div>
+    <div class="finding__sub">La m&uacute;sica tra&iacute;a a la gente. La conexi&oacute;n entre ellos era lo que les hac&iacute;a quedarse.</div>
+  </div>
+</div>
+
+<!-- WHAT FOLLOWED -->
+<div class="pg">
+  <div class="subtitle">Lo que vino despu&eacute;s</div>
+  <ol class="timeline">
+    <li><span class="tag">Session #01</span><span class="desc">Omaya vol&oacute; desde <strong>Brasil</strong> para tocar.</span></li>
+    <li><span class="tag">Session #03</span><span class="desc">Entropia, que ha tocado en <strong>Sonar</strong>, vino a tocar en nuestro living room.</span></li>
+    <li><span class="tag">Session #04</span><span class="desc">Henry Carlin <strong>lanz&oacute; su &aacute;lbum</strong> durante su sesi&oacute;n.</span></li>
+    <li><span class="tag">Session #09</span><span class="desc">Marco Boarelli hab&iacute;a creado una playlist en Spotify llamada <strong>"Airfryer"</strong> despu&eacute;s de venir como invitado, meses antes de que lo invit&aacute;ramos a tocar.</span></li>
+    <li><span class="tag">ADE 2025</span><span class="desc">Fuimos al <strong>Amsterdam Dance Event</strong> para llevar el colectivo a Amsterdam, aprender sobre comunidad en <strong>ADE PRO</strong>, y conectar con artistas, sellos y promotores de la escena.</span></li>
+    <li><span class="tag">Session #10</span><span class="desc">Pri Amaral, una artista que conocimos en <strong>ADE en Amsterdam</strong>, vino a hacer una pintura en vivo mientras Nuup y Valderrama tocaban back to back.</span></li>
+    <li><span class="tag">#11 &amp; #12</span><span class="desc">Llevamos el colectivo a <strong>Brasil</strong>.</span></li>
+    <li><span class="tag">Mayo 2026</span><span class="desc">Agotamos las entradas de nuestro primer evento en un local en <strong>Bridge 48 Barcelona</strong>. 150 entradas. Siete DJs. Dos salas.</span></li>
+    <li><span class="tag">La semana pasada</span><span class="desc">KMNI desde <strong>EEUU</strong> y Soufie desde <strong>Brasil</strong> volaron a nuestra casa para grabar una sesi&oacute;n con nosotros.</span></li>
+  </ol>
+  <div class="finding">
+    <div class="finding__body">Lo que empez&oacute; en un living room se convirti&oacute; en algo m&aacute;s grande de lo que el espacio pod&iacute;a contener. Pero al final, siempre volvemos al living room.</div>
+  </div>
+  <div class="photo-full"><img src="DS0075.JPG" alt="Airfryer Collective"></div>
+</div>
+
+<!-- 02 FORMAT -->
+<div class="pg">
+  <div class="section-head"><div class="section-num">02 &middot; C&oacute;mo funciona</div><h2>El formato</h2></div>
+  <div class="prose">
+    <p class="lead">Empieza con una conversaci&oacute;n. Encontramos a un DJ, le compartimos el concepto, y le abrimos la puerta del living room.</p>
+    <p>El living room es su laboratorio. Libertad para probar m&uacute;sica, poner lo que realmente escuchan, y conectar con gente que vino exactamente para eso. Sin brief de g&eacute;nero. Sin setlist seguro. Nadie sabe lo que el DJ va a poner hasta que empieza a sonar.</p>
+  </div>
+  <div class="features">
+    <div class="feat"><div class="feat__num">Antes</div><div class="feat__title">Conectar</div><div class="feat__body">Conectamos a todos los que van a venir. Qui&eacute;n es el DJ, qu&eacute; esperar, c&oacute;mo llegar. La gente empieza a hablar antes de llegar.</div></div>
+    <div class="feat"><div class="feat__num">1 hora antes</div><div class="feat__title">Reunirse</div><div class="feat__body">Todos llegan una hora antes del set. Nos juntamos, conectamos, tomamos una cerveza. Cuando empieza la m&uacute;sica, la sala ya tiene energ&iacute;a.</div></div>
+    <div class="feat"><div class="feat__num">La sesi&oacute;n</div><div class="feat__title">La m&uacute;sica</div><div class="feat__body">Entonces el DJ toca, y lo que pasa es dif&iacute;cil de describir en papel: conexi&oacute;n profunda, gente dando el 100% un jueves por la noche, y una sala que vibra mientras todos bailan.</div></div>
+    <div class="feat"><div class="feat__num">Despu&eacute;s</div><div class="feat__title">La grabaci&oacute;n</div><div class="feat__body">Grabamos cada sesi&oacute;n completa. No por contenido. Por recuerdo. El DJ se lleva un set producido profesionalmente. Lo subimos todo a YouTube.</div></div>
+  </div>
+  <div class="photo-full"><img src="session-format-sm.jpg" alt="Session" style="max-height:70mm"></div>
+  <div class="prose">
+    <p>La lista de invitados se divide en dos. Nosotros invitamos a nuestra gente, el DJ invita a la suya. Dos c&iacute;rculos que nunca se han visto entran en la misma sala. Al final de la noche, son un solo grupo. Grabamos cada sesi&oacute;n completa. No por contenido. Por recuerdo. El DJ se lleva un set producido profesionalmente para su carrera. Lo subimos todo a YouTube para que cualquiera pueda encontrarlo.</p>
+  </div>
+</div>
+
+<!-- 03 COMMUNITY -->
+<div class="pg">
+  <div class="section-head"><div class="section-num">03 &middot; C&oacute;mo crecemos</div><h2>La comunidad</h2></div>
+  <div class="prose">
+    <p class="lead">La lista de invitados es personal.</p>
+    <p>No hay venta p&uacute;blica de entradas para las sesiones en casa. No hay convocatorias abiertas. Cada persona en la sala fue invitada por alguien que quer&iacute;a que estuviera ah&iacute;. As&iacute; es como la energ&iacute;a se mantiene.</p>
+  </div>
+  <div class="features cols3">
+    <div class="feat"><div class="feat__num">Tracking</div><div class="feat__title">Base de datos</div><div class="feat__body">Cada persona que ha asistido a una sesi&oacute;n est&aacute; registrada. Sabemos qui&eacute;n vino, cu&aacute;ndo y a trav&eacute;s de qui&eacute;n.</div></div>
+    <div class="feat"><div class="feat__num">Por sesi&oacute;n</div><div class="feat__title">Grupos de WhatsApp</div><div class="feat__body">Un grupo dedicado para cada sesi&oacute;n. La gente conecta antes de llegar, y sigue conectada despu&eacute;s.</div></div>
+    <div class="feat"><div class="feat__num">Continuo</div><div class="feat__title">Canal de comunidad</div><div class="feat__body">Cada sesi&oacute;n publicada, pr&oacute;ximas fechas, lo que viene. La gente lo comparte con amigos, pregunta cu&aacute;ndo es la pr&oacute;xima.</div></div>
+  </div>
+  <div class="prose">
+    <p>DJs que vinieron como invitados empezaron a pedir tocar. No por la grabaci&oacute;n. No por la visibilidad. Porque sintieron algo en esa sala y quer&iacute;an ser parte. Nuup y Valderrama, dos DJs que han tocado junto a Massano y Ame, llamaron a su sesi&oacute;n una catarsis. Marco Boarelli cre&oacute; una playlist en Spotify llamada "Airfryer" despu&eacute;s de venir como invitado, meses antes de que lo invit&aacute;ramos a tocar.</p>
+    <p>Un grupo n&uacute;cleo lleva desde la primera sesi&oacute;n. Ayudan a montar. Traen gente, y vuelven siempre.</p>
+  </div>
+  <div class="photo-full"><img src="community-livingroom.jpg" alt="Community" style="max-height:65mm"></div>
+  <div class="finding">
+    <div class="finding__body">495 personas han pasado por nuestras sesiones. Sin publicidad. Sin presupuesto de promoci&oacute;n. Cada persona vino porque alguien se lo cont&oacute;.</div>
+    <div class="finding__sub">Cuando organizamos nuestro primer evento en un local, 150 de ellos compraron entrada. As&iacute; se ve esta comunidad cuando aparece.</div>
+  </div>
+</div>
+
+<!-- 04 DJ QUOTES -->
+<div class="pg">
+  <div class="section-head"><div class="section-num">04 &middot; En sus palabras</div><h2>Lo que dicen los DJs</h2></div>
+  <div class="prose" style="margin-bottom:4mm"><p class="lead">Cuatro DJs. Sus palabras.</p></div>
+  <div class="quotes">
+    <div class="quote"><p class="quote__txt">&ldquo;Con esta sesi&oacute;n sentimos que ten&iacute;amos un lienzo en blanco. En lugar de adaptarnos a un entorno y ganarnos la confianza de un p&uacute;blico, nos sentimos liberados por el espacio y apoyados por nuestra peque&ntilde;a audiencia, d&aacute;ndonos la confianza de llevarlos en cualquier direcci&oacute;n que quisi&eacute;ramos. Fue el momento perfecto para expresarnos de la forma m&aacute;s pura.&rdquo;</p><div class="quote__attr"><span class="quote__name">Valderrama</span><span class="quote__meta">Session #10 &middot; Colombia &middot; Indie Dance, Melodic House</span></div></div>
+    <div class="quote"><p class="quote__txt">&ldquo;Esta sesi&oacute;n signific&oacute; mucho porque me dio la libertad de poner lo que quisiera. En los clubs muchas veces tienes que adaptarte al horario o a otro artista, pero con Airfryer Collective pude compartir mi propuesta como yo quer&iacute;a.&rdquo;</p><div class="quote__attr"><span class="quote__name">Nuup</span><span class="quote__meta">Session #10 &middot; Mexico &middot; Indie Dance, Melodic House</span></div></div>
+    <div class="quote"><p class="quote__txt">&ldquo;Airfryer es exactamente lo que la m&uacute;sica significa para m&iacute;: estar rodeado de gente que quieres, en un lugar seguro, con buena atm&oacute;sfera y un bassline profundo de fondo. La m&uacute;sica me hace sonre&iacute;r, y este colectivo tambi&eacute;n. Eso es lo &uacute;nico que importa. Good vibes only.&rdquo;</p><div class="quote__attr"><span class="quote__name">Le Bulla</span><span class="quote__meta">Session #06 &middot; Spain &middot; House</span></div></div>
+    <div class="quote"><p class="quote__txt">&ldquo;Desde el momento en que descubr&iacute; el colectivo, conect&eacute; al instante. Crear un espacio donde la m&uacute;sica, y todo lo que genera, sea el foco principal me conmovi&oacute; profundamente. Proyectos como este son exactamente lo que la audiencia necesita: un lugar para conectar con la m&uacute;sica y con amigos en comunidad.&rdquo;</p><div class="quote__attr"><span class="quote__name">Marco Boarelli</span><span class="quote__meta">Session #09 &middot; Argentina &middot; Progressive House</span></div></div>
+  </div>
+</div>
+
+<!-- 05 NUMBERS -->
+<div class="pg">
+  <div class="section-head"><div class="section-num">05 &middot; Trayectoria</div><h2>Los n&uacute;meros</h2></div>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="kpi__label">Sesiones</div><div class="kpi__value">23</div><div class="kpi__sub">Barcelona + Rio de Janeiro</div></div>
+    <div class="kpi"><div class="kpi__label">DJs</div><div class="kpi__value">26</div><div class="kpi__sub"><strong>8</strong> pa&iacute;ses</div></div>
+    <div class="kpi"><div class="kpi__label">Personas</div><div class="kpi__value">495</div><div class="kpi__sub">En nuestras sesiones</div></div>
+    <div class="kpi"><div class="kpi__label">En YouTube</div><div class="kpi__value">13</div><div class="kpi__sub">Sesiones completas</div></div>
+    <div class="kpi"><div class="kpi__label">Grabadas</div><div class="kpi__value">+10</div><div class="kpi__sub">Subiendo pronto</div></div>
+  </div>
+  <div class="extra-stats"><span><strong>ADE 2025</strong> &middot; Amsterdam Dance Event</span><span><strong>Hot Beats 2026</strong></span><span><strong>Rio de Janeiro</strong> &middot; Brasil</span></div>
+  <div class="bridge">
+    <div class="bridge__left">
+      <div class="bridge__badge"><span class="dot"></span>Sold out</div>
+      <div class="bridge__head">Leavin' the Room</div>
+      <div class="bridge__venue">@Bridge 48 Barcelona</div>
+      <div class="bridge__stats"><span>Mayo 2026</span><span><b>150</b> entradas</span><span><b>7</b> DJs</span><span><b>2</b> salas</span></div>
+      <p class="bridge__body">En mayo de 2026, salimos del living room por primera vez. Siete DJs, dos salas, y 150 entradas vendidas sin gastar un solo euro en publicidad. Cada persona que vino hab&iacute;a escuchado de nosotros a trav&eacute;s de alguien que hab&iacute;a estado en el living room antes.</p>
+    </div>
+    <div class="bridge-photos">
+      <img src="bridge48-crowd.jpg" alt="Crowd">
+      <img src="bridge48-liveroom.jpg" alt="Live Room">
+      <img src="bridge48-dancefloor.jpg" alt="Dancefloor">
+      <img src="bridge48-labroom.jpg" alt="Lab Room">
+      <img src="bridge48-community.jpg" alt="Community">
+      <img src="bridge48-closingset.jpg" alt="Closing Set">
+    </div>
+  </div>
+</div>
+
+<!-- 06 WATCH -->
+<div class="pg">
+  <div class="section-head"><div class="section-num">06 &middot; Compru&eacute;balo</div><h2>Watch</h2></div>
+  <div class="featured-session">
+    <img class="thumb" src="thumb-session10.jpg" alt="Session #10">
+    <div style="flex:1">
+      <div style="font-family:var(--display);font-weight:600;font-size:11pt;text-transform:uppercase">Nuup B2B Valderrama + Pri Amaral (Live Painting)</div>
+      <div style="font-size:8.5pt;color:var(--ink50);margin-top:1mm">Session #10 &middot; Colombia / Mexico &middot; Indie Dance, Melodic House</div>
+    </div>
+    <img class="qr" src="qr-session10.svg" alt="QR">
+  </div>
+  <div class="sessions-print">
+    <div class="session-print"><img src="qr-session09.svg" alt="QR"><div class="session-print__name">Marco Boarelli</div><div class="session-print__desc">Session #09 &middot; Argentina &middot; Progressive House</div></div>
+    <div class="session-print"><img src="qr-session03.svg" alt="QR"><div class="session-print__name">Entropia</div><div class="session-print__desc">Session #03 &middot; Spain &middot; Breakbeat, House, Acid</div></div>
+    <div class="session-print"><img src="qr-session07.svg" alt="QR"><div class="session-print__name">Andr&eacute;s Divitto</div><div class="session-print__desc">Session #07 &middot; Argentina &middot; House, Organic House</div></div>
+    <div class="session-print"><img src="qr-session04.svg" alt="QR"><div class="session-print__name">Henry Carlin</div><div class="session-print__desc">Session #04 &middot; Ireland &middot; Indie Dance</div></div>
+  </div>
+  <div class="sessions-link">airfryercollective.com/sessions.html</div>
+</div>
+
+<!-- 07 WHO WE ARE (same page as Watch) -->
+<div style="padding:6mm 20mm 16mm">
+  <div class="section-head"><div class="section-num">07 &middot; Las personas detr&aacute;s</div><h2>Qui&eacute;nes somos</h2></div>
+  <div class="founders">
+    <article class="founder"><div class="founder__portrait"><img src="douglas-portrait.jpg" alt="Douglas"></div><div class="founder__name">Douglas Monroe</div><div class="founder__role">Fundador y Community Builder</div><p class="founder__bio">Brasile&ntilde;o, viviendo en Barcelona. Product Lead en tecnolog&iacute;a durante los &uacute;ltimos seis a&ntilde;os, construyendo soluciones de comunidad con IA a trav&eacute;s de su propia consultora. Apasionado por la m&uacute;sica desde los nueve a&ntilde;os. Fund&oacute; Airfryer Collective y lidera cada sesi&oacute;n.</p></article>
+    <article class="founder"><div class="founder__portrait"><img src="franco-portrait.jpg" alt="Franco"></div><div class="founder__name">Franco Ricchetti</div><div class="founder__role">Operaciones</div><p class="founder__bio">Argentino. Vivi&oacute; en Amsterdam. Ahora Barcelona. Trabaja en ciberseguridad. La fotograf&iacute;a y el DJing son lo que hace para s&iacute; mismo: no es su trabajo, pero se lo toma igual de en serio. M&uacute;sica desde los ocho a&ntilde;os. Para Franco, Airfryer es donde todo eso se une.</p></article>
+    <article class="founder"><div class="founder__portrait"><img src="ivan-portrait.png" alt="Ivan"></div><div class="founder__name">Ivan</div><div class="founder__role">DJ Network &amp; Artist Relations</div><p class="founder__bio">DJ y productor, fichado por Soundgarden. Sus tracks han sido pinchados por Nick Warren y Mariano Mellino. Responsable de las relaciones con artistas y el puente entre el colectivo y la escena DJ.</p></article>
+    <article class="founder"><div class="founder__portrait"><img src="vini-portrait.png" alt="Vini"></div><div class="founder__name">Vini</div><div class="founder__role">Direcci&oacute;n Creativa</div><p class="founder__bio">Brasile&ntilde;o, de R&iacute;o de Janeiro. CTO y due&ntilde;o de un sello discogr&aacute;fico. DJ y productor. Direcci&oacute;n creativa del colectivo y el primer DJ en tocar en una sesi&oacute;n de Airfryer.</p></article>
+  </div>
+</div>
+
+<!-- 08 SALVA DISCOS + CLOSING -->
+<div class="pg">
+  <div class="section-head"><div class="section-num">08 &middot; Por qu&eacute; encajamos</div><h2>Salva Discos</h2></div>
+  <div class="prose">
+    <p class="lead">Salva Discos es una asociaci&oacute;n cultural con 9.000 socios, construida sobre la creencia de que escuchar m&uacute;sica juntos importa m&aacute;s que hacerlo en streaming y en solitario.</p>
+    <p>Comunidad por encima de comercio. Libertad art&iacute;stica. Un espacio donde DJs que empezaron ah&iacute; ahora tocan por toda Europa.</p>
+    <p>Compartimos esos valores. Construimos una comunidad alrededor de la m&uacute;sica, no alrededor de un plan de negocio. Damos a los DJs un espacio para tocar lo que aman, para gente que vino a escuchar. Nos importa la energ&iacute;a de la sala, no el n&uacute;mero de personas en ella.</p>
+    <p>Creemos que una sesi&oacute;n en Salva Discos se sentir&iacute;a como algo que pertenece ah&iacute;.</p>
+  </div>
+  <div style="margin-top:16mm">
+    <h2 class="closing-title">Press <span class="holo">play.</span></h2>
+    <p class="closing-sub">Si esto resuena, nos encantar&iacute;a llevar una sesi&oacute;n a vuestro espacio.</p>
+    <div class="closing-qr">
+      <div class="closing-qr-item"><img src="qr-website.svg" alt="QR"><span>airfryercollective.com</span></div>
+      <div class="closing-qr-item"><img src="qr-instagram.svg" alt="QR"><span>@airfryer_collective</span></div>
+      <div class="closing-qr-item"><img src="qr-youtube.svg" alt="QR"><span>YouTube</span></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

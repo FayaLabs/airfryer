@@ -1,0 +1,4 @@
+# Response headers for STATIC ASSETS only (Workers Assets reads this file from
+# the built client directory). Vite fingerprints everything under /assets.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
